@@ -1,9 +1,24 @@
 {
   "navItems": [
-    { "label": "About", "to": "about" },
-    { "label": "Experience", "to": "experience" },
-    { "label": "Education", "to": "education" },
-    { "label": "Skills", "to": "skills" },
-    { "label": "Contact", "to": "contact" }
+    {
+      "label": "About",
+      "to": "about"
+    },
+    {
+      "label": "Experience",
+      "to": "experience"
+    },
+    {
+      "label": "Education",
+      "to": "education"
+    },
+    {
+      "label": "Skills",
+      "to": "skills"
+    },
+    {
+      "label": "Contact",
+      "to": "contact"
+    }
   ]
 }
