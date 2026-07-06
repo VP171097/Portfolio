@@ -11,20 +11,20 @@ const fetchConfig = async (filename) => {
   return await res.json();
 };
 
+const configFiles = [
+  "about.json",
+  "skills.json",
+  "experience.json",
+  "education.json",
+  "landing.json",
+  "sidebar.json",
+  "navigation.json",
+  "socialLinks.json",
+];
+
 export const ConfigProvider = ({ children }) => {
   const [config, setConfig] = useState({});
   const [loading, setLoading] = useState(true);
-
-  const configFiles = [
-    "about.json",
-    "skills.json",
-    "experience.json",
-    "education.json",
-    "landing.json",
-    "sidebar.json",
-    "navigation.json",
-    "socialLinks.json",
-  ];
 
   useEffect(() => {
     const loadAll = async () => {
