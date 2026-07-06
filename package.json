@@ -43,5 +43,11 @@
     "globals": "^16.2.0",
     "tw-animate-css": "^1.3.4",
     "vite": "^7.0.0"
+  },
+  "allowScripts": {
+    "@swc/core@1.12.9": true,
+    "@tailwindcss/oxide@4.1.11": true,
+    "@tsparticles/engine@3.8.1": true,
+    "esbuild@0.25.5": true
   }
 }

@@ -1,0 +1,52 @@
+{
+  "sectionTitle": "MY SKILLS",
+  "headline": "What's My Programming",
+  "highlight": "Skills Included?",
+  "description": "I develop simple, intuitive, and responsive data engineering pipelines that help users process large-scale data with less effort and better performance.",
+  "technicalSkills": [
+    {
+      "name": "Python",
+      "icon": "/assets/skills/python.png"
+    },
+    {
+      "name": "Pandas",
+      "icon": "/assets/skills/panda.png"
+    },
+    {
+      "name": "PySpark",
+      "icon": "/assets/skills/spark.png"
+    },
+    {
+      "name": "SQL",
+      "icon": "/assets/skills/sql.svg"
+    },
+    {
+      "name": "Azure Databricks",
+      "icon": "/assets/skills/databricks.png"
+    },
+    {
+      "name": "Azure SQL Server",
+      "icon": "/assets/skills/azure_db.svg"
+    },
+    {
+      "name": "Data Lake",
+      "icon": "/assets/skills/dataLake.png"
+    },
+    {
+      "name": "Function Apps",
+      "icon": "/assets/skills/functionapp.png"
+    },
+    {
+      "name": "Kafka",
+      "icon": "/assets/skills/kafka.svg"
+    },
+    {
+      "name": "Azure Storage Explorer",
+      "icon": "/assets/skills/storageExplorer.png"
+    },
+    {
+      "name": "GitHub",
+      "icon": "/assets/skills/github.png"
+    }
+  ]
+}
