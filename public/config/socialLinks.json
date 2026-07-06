@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/vp1710/",
+      "icon": "FaLinkedin"
+    },
+    {
+      "label": "WhatsApp",
+      "url": "https://wa.me/917011088059",
+      "icon": "FaWhatsapp"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:vivekpandey.iimt@gmail.com",
+      "icon": "FaEnvelope"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VP171097",
+      "icon": "FaGithub"
+    }
+  ]
+}

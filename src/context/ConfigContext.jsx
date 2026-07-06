@@ -5,7 +5,7 @@ const ConfigContext = createContext();
 export const useConfig = () => useContext(ConfigContext);
 
 const fetchConfig = async (filename) => {
-  const url = `https://raw.githubusercontent.com/VP171097/portfolio-config/main/${filename}`;
+  const url = `/config/${filename}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
   return await res.json();

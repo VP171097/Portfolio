@@ -1,0 +1,44 @@
+{
+  "title": "Experience",
+  "experienceData": [
+    {
+      "img": "/assets/company/infosys.png",
+      "title": "Senior Associate Consultant",
+      "company": "INFOSYS LIMITED, Noida, India",
+      "duration": "FEB, 2025 - Present",
+      "points": [
+        "Implemented streaming pipelines on Databricks for real-time data processing.",
+        "Assisting in the development and maintenance of data pipelines using Databricks and PySpark.",
+        "Supporting ongoing ETL and data processing tasks to ensure smooth data operations.",
+        "Collaborating with teams to understand data requirements and optimize workflows.",
+        "Employed Python for scripting data transformation and manipulation."
+      ]
+    },
+    {
+      "img": "/assets/company/tcs.png",
+      "title": "Systems Engineer",
+      "company": "TATA CONSULTANCY SERVICES, Noida, India",
+      "duration": "FEB, 2020 - JAN, 2025",
+      "points": [
+        "Built real-time streaming pipelines for TotalEnergies using Databricks & PySpark to process sensor data.",
+        "Developed batch processing pipelines with Python & Azure Function Apps for reporting & analytics.",
+        "Automated Databricks job monitoring, reducing manual effort by 1-2 hours daily via Python & Microsoft Teams integration.",
+        "Designed and optimized ETL workflows to ensure data integrity and accuracy.",
+        "Automated data processing tasks using Python, improving efficiency.",
+        "Led a 6-member cross-functional team, collaborating across business units.",
+        "Developed Interactive Electronic Technical Manuals (IETMs) using XML & HTML."
+      ]
+    },
+    {
+      "img": "/assets/company/satyam.png",
+      "title": "Hardware Design Engineer",
+      "company": "SATYAM SOFTWARE SOLUTIONS PVT. LTD., Noida, India",
+      "duration": "JUNE, 2019 - FEB, 2020",
+      "points": [
+        "Designed schematics and PCB layouts for Smart Ticket Vending Machines and AFC Gates for Delhi Metro Rail Corporation.",
+        "Created PCB layouts using Altium Designer and Ki-CAD.",
+        "Performed testing and validation of hardware designs to ensure reliability."
+      ]
+    }
+  ]
+}
