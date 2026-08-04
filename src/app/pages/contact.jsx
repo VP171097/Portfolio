@@ -2,55 +2,33 @@ import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { SparklesText } from "@/components/magicui/sparkles-text";
-import { Mail, User, MessageSquare, Send, CheckCircle2, AlertCircle, Info } from "lucide-react";
+import { Mail, User, MessageSquare, Send } from "lucide-react";
 
 const ContactSection = () => {
   const form = useRef();
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // { type: 'success' | 'error' | 'warning', text: string }
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [status, setStatus] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
     setStatus(null);
 
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    const isPlaceholder = (val) => !val || val.includes("your_") || val.trim() === "";
-
-    if (isPlaceholder(serviceId) || isPlaceholder(templateId) || isPlaceholder(publicKey)) {
-      setStatus({
-        type: "warning",
-        text: "Email service configuration missing. Please add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to your .env file or GitHub Secrets.",
-      });
-      return;
-    }
-
-    setLoading(true);
-
     emailjs
       .sendForm(serviceId, templateId, form.current, publicKey)
       .then(
         (result) => {
-          console.log("EmailJS Result:", result.text);
-          setStatus({
-            type: "success",
-            text: "Thank you! Your message has been sent successfully. I will get back to you soon.",
-          });
-          setFormData({ name: "", email: "", message: "" });
+          console.log(result.text);
+          setStatus({ type: "success", text: "Message sent successfully!" });
+          e.target.reset();
         },
         (error) => {
-          console.error("EmailJS Error:", error);
-          setStatus({
-            type: "error",
-            text: `Failed to send message: ${error.text || "Unexpected error occurred. Please try again."}`,
-          });
+          console.error(error.text);
+          setStatus({ type: "error", text: "An error occurred. Please try again." });
         }
       )
       .finally(() => {
@@ -69,7 +47,7 @@ const ContactSection = () => {
           className="rounded-2xl w-full max-w-2xl text-white p-6 md:p-10"
         >
           <div className="text-center mb-8">
-            <p className="text-xs tracking-widest text-orange-400 mb-1 font-semibold">
+            <p className="text-xs tracking-widest text-orange-400 mb-1">
               GET IN TOUCH
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -82,44 +60,32 @@ const ContactSection = () => {
 
           {status && (
             <div
-              className={`mb-6 p-4 rounded-lg flex items-start gap-3 text-sm ${
+              className={`mb-6 p-4 rounded-md text-sm text-center ${
                 status.type === "success"
-                  ? "bg-emerald-950/80 border border-emerald-500/50 text-emerald-300"
-                  : status.type === "warning"
-                  ? "bg-amber-950/80 border border-amber-500/50 text-amber-300"
-                  : "bg-rose-950/80 border border-rose-500/50 text-rose-300"
+                  ? "bg-emerald-900/60 text-emerald-300 border border-emerald-500/30"
+                  : "bg-red-900/60 text-red-300 border border-red-500/30"
               }`}
             >
-              {status.type === "success" && <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />}
-              {status.type === "warning" && <Info className="w-5 h-5 shrink-0 mt-0.5" />}
-              {status.type === "error" && <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />}
-              <div>{status.text}</div>
+              {status.text}
             </div>
           )}
 
           <form ref={form} onSubmit={sendEmail} className="space-y-6">
-            {/* Hidden EmailJS compatibility fields */}
-            <input type="hidden" name="from_name" value={formData.name} />
-            <input type="hidden" name="from_email" value={formData.email} />
-            <input type="hidden" name="reply_to" value={formData.email} />
-
             {/* Name */}
             <div>
               <label
                 htmlFor="name"
                 className="flex items-center text-sm font-medium text-gray-300 mb-1"
               >
-                <User className="w-4 h-4 mr-2 text-amber-400" />
+                <User className="w-4 h-4 mr-2" />
                 Name
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
                 required
-                className="w-full rounded-md border border-neutral-700 bg-neutral-900 text-white p-3 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
+                className="w-full rounded-md border border-neutral-700 bg-neutral-900 text-white p-3 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 placeholder="Your name"
               />
             </div>
@@ -130,17 +96,15 @@ const ContactSection = () => {
                 htmlFor="email"
                 className="flex items-center text-sm font-medium text-gray-300 mb-1"
               >
-                <Mail className="w-4 h-4 mr-2 text-amber-400" />
+                <Mail className="w-4 h-4 mr-2" />
                 Email
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
                 required
-                className="w-full rounded-md border border-neutral-700 bg-neutral-900 text-white p-3 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
+                className="w-full rounded-md border border-neutral-700 bg-neutral-900 text-white p-3 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 placeholder="you@example.com"
               />
             </div>
@@ -151,17 +115,15 @@ const ContactSection = () => {
                 htmlFor="message"
                 className="flex items-center text-sm font-medium text-gray-300 mb-1"
               >
-                <MessageSquare className="w-4 h-4 mr-2 text-amber-400" />
+                <MessageSquare className="w-4 h-4 mr-2" />
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows="5"
-                value={formData.message}
-                onChange={handleChange}
                 required
-                className="w-full rounded-md border border-neutral-700 bg-neutral-900 text-white p-3 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
+                className="w-full rounded-md border border-neutral-700 bg-neutral-900 text-white p-3 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 placeholder="Your message..."
               ></textarea>
             </div>
@@ -172,14 +134,14 @@ const ContactSection = () => {
               disabled={loading}
               className={`w-full flex justify-center items-center gap-2 ${
                 loading
-                  ? "bg-neutral-600 cursor-not-allowed text-neutral-300"
-                  : "bg-amber-500 hover:bg-amber-600 text-black font-semibold shadow-lg shadow-amber-500/20 active:scale-[0.99]"
-              } py-3 rounded-md transition duration-200`}
+                  ? "bg-gray-600 cursor-not-allowed"
+                  : "bg-amber-500 hover:bg-amber-600"
+              } text-black font-semibold py-3 rounded-md transition`}
             >
               {loading ? (
                 <>
                   <svg
-                    className="animate-spin h-5 w-5 text-black"
+                    className="animate-spin h-4 w-4 text-black"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -198,12 +160,12 @@ const ContactSection = () => {
                       d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"
                     ></path>
                   </svg>
-                  <span>Sending Message...</span>
+                  Sending...
                 </>
               ) : (
                 <>
                   <Send className="w-4 h-4" />
-                  <span>Send Message</span>
+                  Send Message
                 </>
               )}
             </button>
@@ -226,4 +188,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
