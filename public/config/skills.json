@@ -1,7 +1,7 @@
 {
   "sectionTitle": "MY SKILLS",
-  "headline": "What's My Programming",
-  "highlight": "Skills Included?",
+  "headline": "Technical & Engineering",
+  "highlight": "Skills & Technologies",
   "description": "Specialized in Big Data & Cloud Platforms, PySpark, Azure Databricks, Data Lakehouse architectures, real-time streaming, and workflow automation.",
   "categories": [
     {
@@ -48,10 +48,6 @@
       "icon": "/assets/skills/python.png"
     },
     {
-      "name": "PySpark",
-      "icon": "/assets/skills/spark.png"
-    },
-    {
       "name": "SQL",
       "icon": "/assets/skills/sql.svg"
     },
@@ -64,8 +60,8 @@
       "icon": "/assets/skills/azure_db.svg"
     },
     {
-      "name": "Data Lake",
-      "icon": "/assets/skills/dataLake.png"
+      "name": "PySpark",
+      "icon": "/assets/skills/pyspark.png"
     },
     {
       "name": "Kafka",
@@ -73,7 +69,7 @@
     },
     {
       "name": "AWS S3",
-      "icon": "/assets/skills/s3.png"
+      "icon": "/assets/skills/s3.webp"
     },
     {
       "name": "Azure Data Lake",
@@ -81,15 +77,11 @@
     },
     {
       "name": "Azure Key Vault",
-      "icon": "/assets/skills/azure_keyvault.png"
+      "icon": "/assets/skills/azure_keyvault.webp"
     },
     {
       "name": "Azure Cosmos DB",
       "icon": "/assets/skills/cosmos.png"
-    },
-    {
-      "name": "Azure SQL Server",
-      "icon": "/assets/skills/azure_db.svg"
     },
     {
       "name": "Azure Storage Explorer",
