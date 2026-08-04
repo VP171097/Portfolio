@@ -4,11 +4,46 @@ const ConfigContext = createContext();
 
 export const useConfig = () => useContext(ConfigContext);
 
+const getAssetUrl = (path) => {
+  if (typeof path !== "string") return path;
+  if (
+    path.startsWith("http://") ||
+    path.startsWith("https://") ||
+    path.startsWith("data:")
+  )
+    return path;
+  if (
+    path.startsWith("/assets/") ||
+    path.startsWith("assets/") ||
+    path.startsWith("/resume") ||
+    path.startsWith("resume")
+  ) {
+    const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+    return `${import.meta.env.BASE_URL}${cleanPath}`;
+  }
+  return path;
+};
+
+const processConfig = (obj) => {
+  if (!obj) return obj;
+  if (typeof obj === "string") return getAssetUrl(obj);
+  if (Array.isArray(obj)) return obj.map(processConfig);
+  if (typeof obj === "object") {
+    const res = {};
+    for (const key of Object.keys(obj)) {
+      res[key] = processConfig(obj[key]);
+    }
+    return res;
+  }
+  return obj;
+};
+
 const fetchConfig = async (filename) => {
   const url = `${import.meta.env.BASE_URL}config/${filename}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
-  return await res.json();
+  const json = await res.json();
+  return processConfig(json);
 };
 
 const configFiles = [
