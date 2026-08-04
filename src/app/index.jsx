@@ -41,8 +41,8 @@ const App = () => {
       />
       <ScrollProgress className="top-0 z-20" />
 
-      {/* ✅ Header at top for small screens only */}
-      <div className="xl:hidden sticky top-0 z-50">
+      {/* ✅ Sticky Header at top for all screens */}
+      <div className="sticky top-0 z-50">
         <Header />
       </div>
 
