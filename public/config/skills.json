@@ -56,6 +56,10 @@
       "icon": "/assets/skills/databricks.png"
     },
     {
+      "name": "Databricks Lakehouse",
+      "icon": "/assets/skills/databricks_lakehouse.png"
+    },
+    {
       "name": "Azure SQL Server",
       "icon": "/assets/skills/azure_db.svg"
     },
