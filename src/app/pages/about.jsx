@@ -64,7 +64,7 @@ const About = () => {
             rectangleClassName="bg-muted rounded-lg dark:bg-neutral-700 border-neutral-300 dark:border-neutral-600"
             pointerClassName="text-yellow-500"
           >
-            <span className="relative z-10 text-amber-300 xl:text-2xl sm:text-sm xl:p-5 p-2 font-semibold">
+            <span className="relative z-10 text-amber-300 text-sm md:text-base font-bold px-2 py-1">
               {aboutConfig.highlight}
             </span>
           </PointerHighlight>
