@@ -2,7 +2,7 @@
 
 Workflows:
 - .github/workflows/ci.yml — runs lint/test/build on PRs and pushes to dev/main.
-- .github/workflows/deploy-gh-pages.yml — builds and deploys the site to GitHub Pages on push to main.
+- .github/workflows/cd.yml — builds and deploys the site to GitHub Pages on push to main.
 
 Defaults:
 - Production branch: main

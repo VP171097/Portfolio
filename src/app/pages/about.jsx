@@ -37,9 +37,11 @@ const About = () => {
     );
   }
 
-  const [beforeHighlight, afterHighlight] = aboutConfig.description1.split(
+  const [beforeHighlight, afterHighlight] = aboutConfig.description1?.includes(
     aboutConfig.highlight
-  );
+  )
+    ? aboutConfig.description1.split(aboutConfig.highlight)
+    : [aboutConfig.description1 || "", ""];
 
   return (
     <section
@@ -62,7 +64,7 @@ const About = () => {
             rectangleClassName="bg-muted rounded-lg dark:bg-neutral-700 border-neutral-300 dark:border-neutral-600"
             pointerClassName="text-yellow-500"
           >
-            <span className="relative z-10 text-amber-300 xl:text-2xl sm:text-sm xl:p-5 p-2 font-semibold">
+            <span className="relative z-10 text-amber-300 text-sm md:text-base font-bold px-2 py-1">
               {aboutConfig.highlight}
             </span>
           </PointerHighlight>
@@ -78,9 +80,8 @@ const About = () => {
         {/* Mobile Expand/Collapse with Transition */}
         <div className="lg:hidden">
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
-              showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-            }`}
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+              }`}
           >
             <p className="text-sm">{aboutConfig.description2}</p>
           </div>
