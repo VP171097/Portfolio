@@ -2,15 +2,50 @@
   "sectionTitle": "MY SKILLS",
   "headline": "What's My Programming",
   "highlight": "Skills Included?",
-  "description": "I develop simple, intuitive, and responsive data engineering pipelines that help users process large-scale data with less effort and better performance.",
+  "description": "Specialized in Big Data & Cloud Platforms, PySpark, Azure Databricks, Data Lakehouse architectures, real-time streaming, and workflow automation.",
+  "categories": [
+    {
+      "category": "Languages",
+      "skills": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "category": "Big Data & Cloud",
+      "skills": [
+        "Azure Databricks",
+        "Databricks Lakehouse",
+        "Unity Catalog",
+        "PySpark",
+        "Kafka",
+        "AWS S3"
+      ]
+    },
+    {
+      "category": "Azure Services",
+      "skills": [
+        "Azure Data Lake",
+        "Azure Key Vault",
+        "Azure Cosmos DB",
+        "Azure SQL Server",
+        "Azure Storage Explorer"
+      ]
+    },
+    {
+      "category": "Tools & Collaboration",
+      "skills": [
+        "GitHub",
+        "Jenkins",
+        "Bitbucket",
+        "Microsoft Teams"
+      ]
+    }
+  ],
   "technicalSkills": [
     {
       "name": "Python",
       "icon": "/assets/skills/python.png"
-    },
-    {
-      "name": "Pandas",
-      "icon": "/assets/skills/panda.png"
     },
     {
       "name": "PySpark",
@@ -33,12 +68,28 @@
       "icon": "/assets/skills/dataLake.png"
     },
     {
-      "name": "Function Apps",
-      "icon": "/assets/skills/functionapp.png"
-    },
-    {
       "name": "Kafka",
       "icon": "/assets/skills/kafka.svg"
+    },
+    {
+      "name": "AWS S3",
+      "icon": "/assets/skills/s3.png"
+    },
+    {
+      "name": "Azure Data Lake",
+      "icon": "/assets/skills/dataLake.png"
+    },
+    {
+      "name": "Azure Key Vault",
+      "icon": "/assets/skills/azure_keyvault.png"
+    },
+    {
+      "name": "Azure Cosmos DB",
+      "icon": "/assets/skills/cosmos.png"
+    },
+    {
+      "name": "Azure SQL Server",
+      "icon": "/assets/skills/azure_db.svg"
     },
     {
       "name": "Azure Storage Explorer",
@@ -47,6 +98,14 @@
     {
       "name": "GitHub",
       "icon": "/assets/skills/github.png"
+    },
+    {
+      "name": "Jenkins",
+      "icon": "/assets/skills/jenkins.png"
+    },
+    {
+      "name": "Bitbucket",
+      "icon": "/assets/skills/bitbucket.png"
     }
   ]
 }

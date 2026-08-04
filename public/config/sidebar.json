@@ -1,6 +1,6 @@
 {
   "name": "Vivek Pandey",
-  "role": "Azure Data Engineer",
+  "role": "Data Engineering | Azure Databricks | PySpark | Azure",
   "avatar": "/assets/my-avatar.png",
   "contacts": [
     {
@@ -16,13 +16,13 @@
     {
       "type": "github",
       "title": "GitHub",
-      "value": "github.com/VP171097",
+      "value": "github.com",
       "link": "https://github.com/VP171097"
     },
     {
       "type": "location",
       "title": "Location",
-      "value": "Noida, U.P., India"
+      "value": "Noida, Uttar Pradesh, India"
     }
   ]
 }

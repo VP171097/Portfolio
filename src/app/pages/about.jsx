@@ -37,9 +37,11 @@ const About = () => {
     );
   }
 
-  const [beforeHighlight, afterHighlight] = aboutConfig.description1.split(
+  const [beforeHighlight, afterHighlight] = aboutConfig.description1?.includes(
     aboutConfig.highlight
-  );
+  )
+    ? aboutConfig.description1.split(aboutConfig.highlight)
+    : [aboutConfig.description1 || "", ""];
 
   return (
     <section
@@ -78,9 +80,8 @@ const About = () => {
         {/* Mobile Expand/Collapse with Transition */}
         <div className="lg:hidden">
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
-              showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-            }`}
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+              }`}
           >
             <p className="text-sm">{aboutConfig.description2}</p>
           </div>
