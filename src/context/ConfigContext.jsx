@@ -55,6 +55,8 @@ const configFiles = [
   "sidebar.json",
   "navigation.json",
   "socialLinks.json",
+  "projects.json",
+  "certifications.json",
 ];
 
 export const ConfigProvider = ({ children }) => {

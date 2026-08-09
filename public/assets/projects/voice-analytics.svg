@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14" />
+      <stop offset="50%" stop-color="#120c24" />
+      <stop offset="100%" stop-color="#1a0f0a" />
+    </linearGradient>
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="50%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)" />
+  
+  <!-- Subtle Grid -->
+  <g opacity="0.12" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90" />
+    <line x1="0" y1="180" x2="800" y2="180" />
+    <line x1="0" y1="270" x2="800" y2="270" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="160" y1="0" x2="160" y2="450" />
+    <line x1="320" y1="0" x2="320" y2="450" />
+    <line x1="480" y1="0" x2="480" y2="450" />
+    <line x1="640" y1="0" x2="640" y2="450" />
+  </g>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="200" cy="225" r="140" fill="#f59e0b" opacity="0.1" filter="url(#glow)" />
+  <circle cx="600" cy="225" r="140" fill="#6366f1" opacity="0.15" filter="url(#glow)" />
+
+  <!-- Data Flow Pipeline Lines -->
+  <path d="M 80 225 C 220 120, 320 320, 480 225 S 640 140, 720 225" fill="none" stroke="url(#waveGrad)" stroke-width="4" filter="url(#glow)" />
+  <path d="M 80 225 C 220 120, 320 320, 480 225 S 640 140, 720 225" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
+
+  <!-- Audio Waveform Bars (Center) -->
+  <g transform="translate(400, 225)">
+    <rect x="-110" y="-35" width="6" height="70" rx="3" fill="#fbbf24" opacity="0.8" />
+    <rect x="-90" y="-55" width="6" height="110" rx="3" fill="#f59e0b" opacity="0.9" />
+    <rect x="-70" y="-20" width="6" height="40" rx="3" fill="#fbbf24" opacity="0.7" />
+    <rect x="-50" y="-75" width="6" height="150" rx="3" fill="#f97316" filter="url(#glow)" />
+    <rect x="-30" y="-45" width="6" height="90" rx="3" fill="#fbbf24" opacity="0.85" />
+    <rect x="-10" y="-90" width="6" height="180" rx="3" fill="#ec4899" filter="url(#glow)" />
+    <rect x="10" y="-60" width="6" height="120" rx="3" fill="#ec4899" opacity="0.9" />
+    <rect x="30" y="-80" width="6" height="160" rx="3" fill="#818cf8" filter="url(#glow)" />
+    <rect x="50" y="-30" width="6" height="60" rx="3" fill="#a5b4fc" opacity="0.7" />
+    <rect x="70" y="-65" width="6" height="130" rx="3" fill="#6366f1" opacity="0.9" />
+    <rect x="90" y="-40" width="6" height="80" rx="3" fill="#818cf8" opacity="0.8" />
+    <rect x="110" y="-25" width="6" height="50" rx="3" fill="#6366f1" opacity="0.6" />
+  </g>
+
+  <!-- Left Node: Amazon Connect / Audio Ingest -->
+  <g transform="translate(140, 225)">
+    <circle cx="0" cy="0" r="38" fill="#181824" stroke="#f59e0b" stroke-width="2.5" filter="url(#glow)" />
+    <circle cx="0" cy="0" r="28" fill="#261b0c" />
+    <!-- Microphone Icon -->
+    <path d="M -4 -12 A 4 4 0 0 1 4 -12 L 4 -2 A 4 4 0 0 1 -4 -2 Z" fill="#fbbf24" />
+    <path d="M -8 -4 A 8 8 0 0 0 8 -4 M 0 4 L 0 10 M -5 10 L 5 10" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" />
+    <text x="0" y="55" fill="#fef3c7" font-size="12" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="1">AUDIO INGEST</text>
+  </g>
+
+  <!-- Right Node: Delta Lake / Analytics Mart -->
+  <g transform="translate(660, 225)">
+    <circle cx="0" cy="0" r="38" fill="#181824" stroke="#6366f1" stroke-width="2.5" filter="url(#glow)" />
+    <circle cx="0" cy="0" r="28" fill="#13152c" />
+    <!-- Database / Lakehouse Icon -->
+    <ellipse cx="0" cy="-8" rx="14" ry="5" fill="#818cf8" />
+    <path d="M -14 -8 L -14 0 A 14 5 0 0 0 14 0 L 14 -8" fill="none" stroke="#818cf8" stroke-width="2" />
+    <path d="M -14 0 L -14 8 A 14 5 0 0 0 14 8 L 14 0" fill="none" stroke="#818cf8" stroke-width="2" />
+    <text x="0" y="55" fill="#e0e7ff" font-size="12" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="1">DELTA LAKEHOUSE</text>
+  </g>
+
+  <!-- Floating Badges -->
+  <g transform="translate(400, 75)">
+    <rect x="-140" y="-18" width="280" height="36" rx="18" fill="#181825" stroke="#f59e0b" stroke-width="1.5" opacity="0.9" />
+    <text x="0" y="5" fill="#fbbf24" font-size="13" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="1">🎙️ AMAZON CONNECT &amp; PYSPARK STREAMING</text>
+  </g>
+</svg>
