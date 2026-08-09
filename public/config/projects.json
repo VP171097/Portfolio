@@ -1,0 +1,105 @@
+{
+  "title": "Featured Projects",
+  "subtitle": "Real-world data engineering pipelines, cloud solutions, and software platforms I have engineered.",
+  "categories": [
+    "All",
+    "Data Engineering",
+    "Full Stack / Tools",
+    "AI & Computer Vision"
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Call Intelligence: Voice Analytics Pipeline",
+      "category": "Data Engineering",
+      "featured": true,
+      "description": "Enterprise-grade multi-region batch & streaming data pipeline ingesting and analyzing Amazon Connect Contact Lens voice transcripts across 5 global regions (EU, NAM, LATAM, APAC, MEA) into a Medallion Lakehouse.",
+      "highlights": [
+        "Engineered 3-tier Medallion architecture (Bronze ➔ Silver ➔ Silver Plus) on Databricks & Delta Lake",
+        "Implemented PySpark Structured Streaming with Delta Change Data Feed (CDF) & version watermarking",
+        "Extracted sentiment quartiles, talk-to-listen ratios, and conversation metrics with schema drift protection"
+      ],
+      "techStack": [
+        "PySpark",
+        "Databricks",
+        "Delta Lake",
+        "AWS S3",
+        "Amazon Connect",
+        "Unity Catalog",
+        "Change Data Feed",
+        "Python"
+      ],
+      "image": "assets/projects/voice-analytics.svg",
+      "githubUrl": "https://github.com/VP171097/contact-lens-voice-analytics-pipeline",
+      "liveUrl": ""
+    },
+    {
+      "id": 2,
+      "title": "GitHub Developer Suite & Privacy Manager",
+      "category": "Full Stack / Tools",
+      "featured": true,
+      "description": "A modern, privacy-first web tool for developers to manage repository visibility in bulk, enforce branch protection rules, inject CI/CD workflows, manage access control, and automate repository maintenance.",
+      "highlights": [
+        "Zero-Trust client-side architecture executing direct REST API requests to GitHub with zero backend storage",
+        "Bulk repository visibility conversion, bulk archival, branch protection enforcement, and topic tagging",
+        "Automated GitHub Actions CI/CD workflow and Dependabot template injection across repositories"
+      ],
+      "techStack": [
+        "React",
+        "JavaScript",
+        "GitHub REST API",
+        "TailwindCSS",
+        "Vite",
+        "CI/CD Workflows"
+      ],
+      "image": "assets/projects/github-privacy.svg",
+      "githubUrl": "https://github.com/VP171097/github-repo-privacy-tool",
+      "liveUrl": ""
+    },
+    {
+      "id": 3,
+      "title": "AI Smart Attendance Management System",
+      "category": "AI & Computer Vision",
+      "featured": true,
+      "description": "Computer vision-powered desktop application that automates classroom attendance using real-time facial recognition, multi-role access control (Admin, Faculty, Student), and comprehensive audit trails.",
+      "highlights": [
+        "Automated multi-face detection and continuous recognition with confidence scoring and unknown-face logging",
+        "Three complementary attendance workflows: live camera recognition, teacher 1-click marking, and student self-marking",
+        "Built-in timetable scheduling, leave management workflow, attendance locking, and role-based access control"
+      ],
+      "techStack": [
+        "Python",
+        "OpenCV",
+        "Face Recognition",
+        "Computer Vision",
+        "SQLite",
+        "Desktop App"
+      ],
+      "image": "assets/projects/smart-attendance.svg",
+      "githubUrl": "https://github.com/VP171097/SmartAttendanceSystem",
+      "liveUrl": ""
+    },
+    {
+      "id": 4,
+      "title": "Modern Interactive Portfolio Platform",
+      "category": "Full Stack / Tools",
+      "featured": false,
+      "description": "Personal branding and engineering portfolio web application built with responsive glassmorphic UI, particle background, dynamic JSON architecture, and automated Web3Forms integration.",
+      "highlights": [
+        "Dynamic JSON-driven content architecture for instant maintenance without code rebuilds",
+        "Custom glassmorphism UI with MagicCard gradients, Particle canvas, and responsive layouts",
+        "Automated CI/CD deployment pipeline via GitHub Actions to GitHub Pages"
+      ],
+      "techStack": [
+        "React 19",
+        "Vite",
+        "TailwindCSS",
+        "Web3Forms",
+        "GitHub Actions"
+      ],
+      "image": "assets/projects/portfolio-web.svg",
+      "githubUrl": "https://github.com/VP171097/Portfolio",
+      "liveUrl": "https://vp171097.github.io/Portfolio/"
+    }
+  ]
+}

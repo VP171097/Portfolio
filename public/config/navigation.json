@@ -9,12 +9,16 @@
       "to": "experience"
     },
     {
-      "label": "Education",
-      "to": "education"
+      "label": "Projects",
+      "to": "projects"
     },
     {
       "label": "Skills",
       "to": "skills"
+    },
+    {
+      "label": "Education",
+      "to": "education"
     },
     {
       "label": "Contact",
