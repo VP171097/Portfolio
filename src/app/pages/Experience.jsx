@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { useConfig } from "@/context/ConfigContext";
 
@@ -17,7 +17,7 @@ const Experience = () => {
   };
 
   if (loading || !experienceConfig)
-    return <div className="text-white text-center">Loading Experience...</div>;
+    return <div className="text-white text-center py-6">Loading Experience...</div>;
 
   return (
     <div className="text-white">
@@ -25,75 +25,94 @@ const Experience = () => {
         gradientSize={400}
         gradientFrom="#4a16f4"
         gradientTo="#f42116"
-        className="rounded-2xl xl:border-2 xl:p-8 py-6 px-3"
+        className="rounded-2xl xl:border-2 xl:p-8 py-6 px-4"
       >
         {/* Header */}
-        <div className="flex items-center mb-4 px-1">
-          <div className="bg-yellow-400 p-2 rounded-md mr-4 ">
-            <Briefcase size={20} className="text-black" />
+        <div className="flex items-center mb-6 px-1">
+          <div className="bg-yellow-400 p-2 rounded-md mr-4 shadow-md shadow-yellow-500/20">
+            <Briefcase size={22} className="text-black" />
           </div>
-          <h2 className="text-2xl font-bold">{experienceConfig.title}</h2>
+          <div>
+            <h2 className="text-2xl font-bold">{experienceConfig.title || "Experience"}</h2>
+            <div className="bg-yellow-400 w-16 h-1 rounded-sm mt-1"></div>
+          </div>
         </div>
 
-        {/* Timeline */}
-        <div className="relative ml-5 border-l-2 border-gray-600 pt-0.5">
-          {experienceConfig.experienceData.map((item, index) => (
-            <div key={index} className="mb-10 pl-8 relative">
-              <div className="mt-10 py-3">
-                <span className="absolute left-[-9px] top-1 w-4 h-4 bg-yellow-400 rounded-full"></span>
+        {/* Timeline Container */}
+        <div className="relative ml-3 sm:ml-5 border-l-2 border-neutral-700 pl-6 sm:pl-8 space-y-8">
+          {experienceConfig.experienceData.map((item, index) => {
+            const isExpanded = expandedItems[index];
 
-                {/* Title and Info */}
-                <h3 className="xl:text-lg text-xl font-bold">{item.title}</h3>
-                <div className="flex gap-4 mt-3 items-center">
-                  <img
-                    src={item.img}
-                    className="w-28 h-10 object-contain"
-                    alt={`${item.company} logo`}
-                  />
-                  <div className="border-l-2 pl-3">
-                    <p className="text-sm text-gray-400">{item.company}</p>
-                    <p className="text-sm text-gray-400 mb-2">
+            return (
+              <div key={index} className="relative group">
+                {/* Timeline Bullet Node (Aligned with Title) */}
+                <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 flex h-4 w-4">
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-400 border-2 border-black shadow"></span>
+                </span>
+
+                {/* Role Title */}
+                <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-amber-300 transition">
+                  {item.title}
+                </h3>
+
+                {/* Company Banner & Duration */}
+                <div className="flex flex-wrap sm:flex-nowrap gap-3.5 mt-2.5 items-center">
+                  {item.img && (
+                    <img
+                      src={item.img}
+                      className="w-24 sm:w-28 h-9 sm:h-10 object-contain bg-white/5 border border-white/10 rounded-lg p-1.5"
+                      alt={`${item.company} logo`}
+                    />
+                  )}
+                  <div className="border-l border-neutral-700 pl-3">
+                    <p className="text-xs sm:text-sm font-semibold text-neutral-300">
+                      {item.company}
+                    </p>
+                    <p className="text-xs text-amber-400/90 font-medium mt-0.5">
                       {item.duration}
                     </p>
                   </div>
                 </div>
 
-                {/* Points */}
-                <ul className="list-disc list-inside space-y-2 xl:text-sm text-gray-200 mt-2">
-                  {/* Desktop: Always show */}
-                  <div className="hidden lg:block">
+                {/* Points List */}
+                <div className="mt-3.5">
+                  {/* Desktop view: full list */}
+                  <ul className="hidden lg:block list-disc list-outside ml-4 space-y-2 text-xs md:text-sm text-neutral-300 leading-relaxed">
                     {item.points.map((point, i) => (
-                      <li key={i}>{point}</li>
+                      <li key={i} className="pl-1">
+                        {point}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  {/* Mobile: Smooth open/close */}
-                  <div
-                    className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden`}
-                    style={{
-                      maxHeight: expandedItems[index] ? "1000px" : "0px",
-                      opacity: expandedItems[index] ? 1 : 0,
-                      paddingTop: expandedItems[index] ? "0.5rem" : "0",
-                    }}
-                  >
-                    {item.points.map((point, i) => (
-                      <li key={i}>{point}</li>
-                    ))}
-                  </div>
-                </ul>
+                  {/* Mobile view: smooth accordion */}
+                  <div className="lg:hidden">
+                    <ul
+                      className={`list-disc list-outside ml-4 space-y-2 text-xs text-neutral-300 leading-relaxed overflow-hidden transition-all duration-300 ease-in-out ${
+                        isExpanded ? "max-h-[1200px] opacity-100 mt-2" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      {item.points.map((point, i) => (
+                        <li key={i} className="pl-1">
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
 
-                {/* Toggle (mobile) */}
-                <div className="lg:hidden mt-2">
-                  <button
-                    onClick={() => toggleExpand(index)}
-                    className="text-blue-400 text-sm hover:text-amber-400 cursor-pointer focus:outline-none"
-                  >
-                    {expandedItems[index] ? "Show Less" : "See More..."}
-                  </button>
+                    {/* Mobile Toggle Button */}
+                    <button
+                      onClick={() => toggleExpand(index)}
+                      type="button"
+                      className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-amber-400 hover:text-amber-300 transition cursor-pointer p-1 -ml-1"
+                    >
+                      <span>{isExpanded ? "Show Less" : "See More..."}</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </MagicCard>
     </div>
