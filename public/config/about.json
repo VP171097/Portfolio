@@ -5,17 +5,12 @@
   "description2": "My expertise encompasses developing scalable batch and real-time streaming architectures using Medallion Architecture, integrating cloud data services, automating workflow monitoring, and translating complex business requirements into robust, high-availability data solutions.",
   "stats": [
     {
-      "value": "3+",
+      "value": "6+",
       "label": "Years Experience",
       "sub": "Enterprise Delivery"
     },
     {
-      "value": "5+",
-      "label": "Global Regions",
-      "sub": "Multi-Region Cloud"
-    },
-    {
-      "value": "10+",
+      "value": "E2E",
       "label": "Data Pipelines",
       "sub": "Batch & Streaming"
     },

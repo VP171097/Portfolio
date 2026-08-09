@@ -102,7 +102,11 @@ const About = () => {
 
       {/* Key Metrics & Stats Counter Grid */}
       {Array.isArray(aboutConfig.stats) && aboutConfig.stats.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 border-t border-neutral-800">
+        <div className={`grid gap-3 pt-4 border-t border-neutral-800 ${
+          aboutConfig.stats.length === 3
+            ? "grid-cols-1 sm:grid-cols-3"
+            : "grid-cols-2 md:grid-cols-4"
+        }`}>
           {aboutConfig.stats.map((stat, idx) => {
             const Icon = statIcons[idx % statIcons.length];
             return (
