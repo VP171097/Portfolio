@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import emailjs from "emailjs-com";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 import { Mail, User, MessageSquare, Send } from "lucide-react";
@@ -9,31 +8,46 @@ const ContactSection = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const web3FormsKey =
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "67a7fa23-f9fa-4806-ab7a-fc9176ad1bb1";
 
-    emailjs
-      .sendForm(serviceId, templateId, form.current, publicKey)
-      .then(
-        (result) => {
-          console.log(result.text);
-          setStatus({ type: "success", text: "Message sent successfully!" });
-          e.target.reset();
-        },
-        (error) => {
-          console.error(error.text);
-          setStatus({ type: "error", text: "An error occurred. Please try again." });
-        }
-      )
-      .finally(() => {
-        setLoading(false);
+    try {
+      const formData = new FormData(form.current);
+      formData.append("access_key", web3FormsKey);
+      formData.append("subject", `New Message from Portfolio: ${formData.get("name")}`);
+      formData.append("from_name", "Portfolio Contact Form");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
       });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({ type: "success", text: "Message sent successfully!" });
+        form.current.reset();
+      } else {
+        console.error("Web3Forms error:", data);
+        setStatus({
+          type: "error",
+          text: data.message || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (err) {
+      console.error("Web3Forms error:", err);
+      setStatus({
+        type: "error",
+        text: "An error occurred. Please check your connection and try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
