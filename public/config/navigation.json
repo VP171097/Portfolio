@@ -13,8 +13,16 @@
       "to": "education"
     },
     {
+      "label": "Projects",
+      "to": "projects"
+    },
+    {
       "label": "Skills",
       "to": "skills"
+    },
+    {
+      "label": "Certifications",
+      "to": "certifications"
     },
     {
       "label": "Contact",
