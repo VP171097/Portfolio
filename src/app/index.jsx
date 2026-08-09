@@ -9,6 +9,7 @@ import ContactSection from "./pages/contact";
 import Footer from "@/components/layouts/footer";
 import { useConfig } from "@/context/ConfigContext";
 import Header from "@/components/layouts/header";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const App = () => {
   const [showDelayFinished, setShowDelayFinished] = useState(false);
@@ -64,6 +65,9 @@ const App = () => {
       <footer>
         <Footer />
       </footer>
+
+      {/* Floating Back to Top Button */}
+      <ScrollToTop />
     </div>
   );
 };

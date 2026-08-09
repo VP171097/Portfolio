@@ -1,6 +1,7 @@
 {
   "name": "Vivek Pandey",
   "role": "Data Engineering | Azure Databricks | PySpark | Azure",
+  "status": "Available for Opportunities",
   "avatar": "/assets/my-avatar.png",
   "contacts": [
     {
@@ -16,7 +17,7 @@
     {
       "type": "github",
       "title": "GitHub",
-      "value": "github.com",
+      "value": "github.com/VP171097",
       "link": "https://github.com/VP171097"
     },
     {

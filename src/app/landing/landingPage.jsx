@@ -60,8 +60,8 @@ const LandingPage = () => {
         <SocialLinks />
       </div>
 
-      {/* Social Icons (Desktop) */}
-      <div className="hidden xl:flex flex-col gap-6 fixed top-1/2 right-8 -translate-y-1/2 z-50">
+      {/* Social Icons (Desktop Floating Dock) */}
+      <div className="hidden xl:flex flex-col gap-2 fixed top-1/2 right-4 2xl:right-8 -translate-y-1/2 z-50 bg-neutral-950/90 backdrop-blur-md p-2 rounded-2xl border border-neutral-800 shadow-2xl shadow-black/80">
         <SocialLinks />
       </div>
 

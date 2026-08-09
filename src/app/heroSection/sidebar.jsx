@@ -41,25 +41,35 @@ const Sidebar = () => {
         {/* Collapsed Card */}
         <div className="bg-[#1c1c1c] rounded-2xl p-5 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img
-              src={sidebarConfig.avatar}
-              alt="Avatar"
-              className="w-14 h-14 rounded-2xl object-cover bg-gray-700"
-            />
+            <div className="relative">
+              <img
+                src={sidebarConfig.avatar}
+                alt="Avatar"
+                className="w-14 h-14 rounded-2xl object-cover bg-gray-700"
+              />
+              <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-[#1c1c1c]"></span>
+              </span>
+            </div>
             <div>
-              <h2 className="text-white text-2xl font-semibold">
+              <h2 className="text-white text-xl font-semibold">
                 {sidebarConfig.name}
               </h2>
-              <p className="text-gray-400 text-xs mt-1">{sidebarConfig.role}</p>
+              <p className="text-gray-400 text-xs mt-0.5">{sidebarConfig.role}</p>
             </div>
           </div>
 
           {/* Toggle Button */}
-          <button onClick={() => setExpanded(!expanded)}>
+          <button
+            onClick={() => setExpanded(!expanded)}
+            aria-label="Toggle contact information"
+            className="p-2 rounded-lg bg-neutral-800 text-yellow-400"
+          >
             {expanded ? (
-              <FaChevronUp className="text-yellow-400 text-sm" />
+              <FaChevronUp className="text-sm" />
             ) : (
-              <FaChevronDown className="text-yellow-400 text-sm" />
+              <FaChevronDown className="text-sm" />
             )}
           </button>
         </div>
@@ -70,7 +80,15 @@ const Sidebar = () => {
             expanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="mt-4 space-y-4 px-4 pb-5">
+          <div className="mt-4 space-y-3 px-2 pb-3">
+            {/* Status pill on mobile */}
+            {sidebarConfig.status && (
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-medium w-fit mb-3">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>{sidebarConfig.status}</span>
+              </div>
+            )}
+
             {sidebarConfig.contacts.map((contact, idx) => {
               const Icon = iconMap[contact.type];
               return (
@@ -88,23 +106,37 @@ const Sidebar = () => {
       </div>
 
       {/* -------- Large Screens View -------- */}
-      <div className="hidden md:flex flex-col items-center py-6 px-3">
-        <img
-          className="w-32 h-32 rounded-2xl bg-gray-800/40"
-          src={sidebarConfig.avatar}
-          alt="Avatar"
-        />
+      <div className="hidden md:flex flex-col items-center py-4 px-2">
+        <div className="relative mb-3">
+          <img
+            className="w-32 h-32 rounded-2xl bg-gray-800/40 object-cover shadow-md shadow-amber-500/10"
+            src={sidebarConfig.avatar}
+            alt="Avatar"
+          />
+          <span className="absolute bottom-1 right-1 flex h-4 w-4">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-black"></span>
+          </span>
+        </div>
 
-        <h2 className="text-3xl font-bold">{sidebarConfig.name}</h2>
+        <h2 className="text-2xl font-bold text-center text-white">{sidebarConfig.name}</h2>
 
-        <h3 className="text-sm text-gray-400 bg-black xl:px-3 py-2 rounded-lg">
+        <h3 className="text-xs text-gray-400 bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-lg mt-2 text-center">
           {sidebarConfig.role}
         </h3>
 
-        <div className="border border-gray-200 w-full xl:mb-6 my-4"></div>
+        {/* Live Status Pill */}
+        {sidebarConfig.status && (
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300 text-[11px] font-semibold tracking-wide shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>{sidebarConfig.status}</span>
+          </div>
+        )}
+
+        <div className="border-t border-neutral-800 w-full my-5"></div>
 
         {/* Contact Info */}
-        <div className="space-y-6 w-full px-3">
+        <div className="space-y-4 w-full px-1">
           {sidebarConfig.contacts.map((contact, idx) => {
             const Icon = iconMap[contact.type];
             return (
