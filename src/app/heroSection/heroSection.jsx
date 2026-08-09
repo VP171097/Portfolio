@@ -1,9 +1,10 @@
 import React from "react";
 import About from "../pages/about";
 import Experience from "../pages/Experience";
+import Education from "../pages/Education";
 import Projects from "../pages/Projects";
 import SkillsSection from "../pages/skills";
-import Education from "../pages/Education";
+import Certifications from "../pages/Certifications";
 
 const HeroSection = () => {
   return (
@@ -14,14 +15,17 @@ const HeroSection = () => {
       <div id="experience" className="xl:px-10 my-4 scroll-mt-24">
         <Experience />
       </div>
+      <div id="education" className="xl:px-10 my-4 scroll-mt-24">
+        <Education />
+      </div>
       <div id="projects" className="xl:px-10 my-4 scroll-mt-24">
         <Projects />
       </div>
       <div id="skills" className="xl:px-10 my-4 scroll-mt-24">
         <SkillsSection />
       </div>
-      <div id="education" className="xl:px-10 my-4 scroll-mt-24">
-        <Education />
+      <div id="certifications" className="xl:px-10 my-4 scroll-mt-24">
+        <Certifications />
       </div>
     </div>
   );

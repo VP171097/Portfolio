@@ -1,0 +1,48 @@
+{
+  "title": "Certifications & Honors",
+  "subtitle": "Professional cloud, data engineering, and technical certifications earned.",
+  "certifications": [
+    {
+      "name": "Databricks Lakehouse Fundamentals",
+      "issuer": "Databricks",
+      "badge": "Databricks"
+    },
+    {
+      "name": "Introduction to Azure SQL Database for Beginners",
+      "issuer": "Udemy",
+      "badge": "Azure"
+    },
+    {
+      "name": "Python for Data Science, AI & Development",
+      "issuer": "IBM / Coursera",
+      "badge": "Python"
+    },
+    {
+      "name": "Python Essential Training",
+      "issuer": "LinkedIn Learning",
+      "badge": "Python"
+    },
+    {
+      "name": "Web Scraping in Python",
+      "issuer": "Udemy",
+      "badge": "Python"
+    },
+    {
+      "name": "Programming for Everybody",
+      "issuer": "University of Michigan / Coursera",
+      "badge": "Coursera"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Star Team Award",
+      "organization": "Tata Consultancy Services",
+      "description": "Recognized for outstanding team contribution, proactive delivery, and engineering excellence."
+    },
+    {
+      "title": "Process Improvement Award",
+      "organization": "Tata Consultancy Services",
+      "description": "Awarded for optimizing pipeline data workflows and reducing execution bottlenecks."
+    }
+  ]
+}

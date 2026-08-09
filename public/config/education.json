@@ -1,28 +1,12 @@
 {
-  "title": "Education & Certifications",
+  "title": "Education",
   "educationData": [
     {
       "school": "IIMT College of Engineering, Greater Noida",
       "degree": "Bachelor of Technology in Electronics and Communication Engineering",
       "year": "2015 – 2019",
       "grade": "71%",
-      "description": "Completed Bachelor of Technology in Electronics and Communication Engineering with 71% grade."
+      "description": "Completed Bachelor of Technology in Electronics and Communication Engineering with 71% aggregate grade, focusing on embedded systems, computer networks, and programming fundamentals."
     }
-  ],
-  "certifications": [
-    "Databricks Lakehouse Fundamentals (Databricks)",
-    "Introduction to Azure SQL Database for Beginners (Udemy)",
-    "Web Scraping in Python (Udemy)",
-    "Python for Data Science, AI & Development (Coursera)",
-    "Python Essential Training (LinkedIn)",
-    "Programming for Everybody (Coursera)"
-  ],
-  "awards": [
-    "Start Team Award — Tata Consultancy Services",
-    "Process Improvement Award — Tata Consultancy Services"
-  ],
-  "languages": [
-    "Hindi",
-    "Conversational proficiency in English"
   ]
 }
