@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { useConfig } from "@/context/ConfigContext";
 import { Sparkles, Zap, Server, CheckCircle } from "lucide-react";
@@ -8,7 +8,6 @@ const statIcons = [Zap, Server, Sparkles, CheckCircle];
 const About = () => {
   const { config, loading } = useConfig();
   const aboutConfig = config.about;
-  const aboutRef = useRef(null);
 
   if (loading || !aboutConfig) {
     return (
@@ -27,7 +26,6 @@ const About = () => {
   return (
     <section
       id="about"
-      ref={aboutRef}
       className="xl:px-6 px-5 py-8 xl:rounded-2xl bg-black/50 scroll-mt-20"
     >
       <div className="items-center gap-3 mb-3">
