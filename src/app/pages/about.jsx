@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { useConfig } from "@/context/ConfigContext";
+import { Sparkles, Zap, Server, CheckCircle } from "lucide-react";
+
+const statIcons = [Zap, Server, Sparkles, CheckCircle];
 
 const About = () => {
   const { config, loading } = useConfig();
@@ -18,13 +21,14 @@ const About = () => {
       { threshold: 0.2 }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
+    const currentRef = aboutRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -47,13 +51,13 @@ const About = () => {
     <section
       id="about"
       ref={aboutRef}
-      className="xl:px-6 px-5 py-8 xl:rounded-2xl bg-black/50  scroll-mt-20"
+      className="xl:px-6 px-5 py-8 xl:rounded-2xl bg-black/50 scroll-mt-20"
     >
       <div className="items-center gap-3 mb-3">
         <h2 className="text-white xl:text-2xl text-xl font-bold mb-3">
           {aboutConfig.title}
         </h2>
-        <div className="bg-yellow-400 w-15 h-1 rounded-sm"></div>
+        <div className="bg-yellow-400 w-16 h-1 rounded-sm"></div>
       </div>
 
       {/* First Paragraph */}
@@ -73,15 +77,16 @@ const About = () => {
       </div>
 
       {/* Second Paragraph */}
-      <div className="text-gray-300 leading-relaxed">
+      <div className="text-gray-300 leading-relaxed mb-6">
         {/* Desktop always visible */}
         <p className="hidden lg:block">{aboutConfig.description2}</p>
 
         {/* Mobile Expand/Collapse with Transition */}
         <div className="lg:hidden">
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-              }`}
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+            }`}
           >
             <p className="text-sm">{aboutConfig.description2}</p>
           </div>
@@ -94,6 +99,40 @@ const About = () => {
           </button>
         </div>
       </div>
+
+      {/* Key Metrics & Stats Counter Grid */}
+      {Array.isArray(aboutConfig.stats) && aboutConfig.stats.length > 0 && (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 border-t border-neutral-800">
+          {aboutConfig.stats.map((stat, idx) => {
+            const Icon = statIcons[idx % statIcons.length];
+            return (
+              <div
+                key={idx}
+                className="group p-3.5 rounded-xl bg-neutral-950/80 border border-neutral-800 hover:border-amber-400/50 transition-all duration-300 hover:shadow-md hover:shadow-amber-500/10 flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl md:text-2xl font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                    {stat.value}
+                  </span>
+                  <div className="p-1.5 rounded-lg bg-amber-400/10 text-amber-400 group-hover:scale-110 transition-transform">
+                    <Icon size={14} />
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-white leading-tight">
+                    {stat.label}
+                  </p>
+                  {stat.sub && (
+                    <p className="text-[10px] text-gray-400 mt-0.5 leading-tight">
+                      {stat.sub}
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 };

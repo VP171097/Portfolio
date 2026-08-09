@@ -2,5 +2,27 @@
   "title": "About Me",
   "highlight": "Azure Databricks, PySpark, Databricks Lakehouse, and Unity Catalog",
   "description1": "I am a results-driven Data Engineer specializing in Azure Databricks, PySpark, Databricks Lakehouse, and Unity Catalog, with extensive experience designing, building, and optimizing end-to-end, high-performance data pipelines for enterprise environments.",
-  "description2": "My expertise encompasses developing scalable batch and real-time streaming architectures using Medallion Architecture, integrating cloud data services, automating workflow monitoring, and translating complex business requirements into robust, high-availability data solutions."
+  "description2": "My expertise encompasses developing scalable batch and real-time streaming architectures using Medallion Architecture, integrating cloud data services, automating workflow monitoring, and translating complex business requirements into robust, high-availability data solutions.",
+  "stats": [
+    {
+      "value": "3+",
+      "label": "Years Experience",
+      "sub": "Enterprise Delivery"
+    },
+    {
+      "value": "5+",
+      "label": "Global Regions",
+      "sub": "Multi-Region Cloud"
+    },
+    {
+      "value": "10+",
+      "label": "Data Pipelines",
+      "sub": "Batch & Streaming"
+    },
+    {
+      "value": "100%",
+      "label": "Delivery Rate",
+      "sub": "Production Quality"
+    }
+  ]
 }
