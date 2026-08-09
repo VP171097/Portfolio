@@ -10,9 +10,14 @@
       "sub": "Enterprise Delivery"
     },
     {
-      "value": "E2E",
+      "value": "End-to-End",
       "label": "Data Pipelines",
       "sub": "Batch & Streaming"
+    },
+    {
+      "value": "Multi-Cloud",
+      "label": "Cloud Platforms",
+      "sub": "Azure & AWS"
     },
     {
       "value": "100%",
