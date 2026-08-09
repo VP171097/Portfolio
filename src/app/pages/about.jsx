@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { useConfig } from "@/context/ConfigContext";
 import { Sparkles, Zap, Server, CheckCircle } from "lucide-react";
@@ -8,30 +8,7 @@ const statIcons = [Zap, Server, Sparkles, CheckCircle];
 const About = () => {
   const { config, loading } = useConfig();
   const aboutConfig = config.about;
-  const [showMore, setShowMore] = useState(false);
   const aboutRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          setShowMore(false);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentRef = aboutRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
 
   if (loading || !aboutConfig) {
     return (
@@ -76,28 +53,9 @@ const About = () => {
         {afterHighlight}
       </div>
 
-      {/* Second Paragraph */}
-      <div className="text-gray-300 leading-relaxed mb-6">
-        {/* Desktop always visible */}
-        <p className="hidden lg:block">{aboutConfig.description2}</p>
-
-        {/* Mobile Expand/Collapse with Transition */}
-        <div className="lg:hidden">
-          <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
-              showMore ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-            }`}
-          >
-            <p className="text-sm">{aboutConfig.description2}</p>
-          </div>
-
-          <button
-            onClick={() => setShowMore(!showMore)}
-            className="mt-2 text-blue-400 text-sm hover:text-amber-400 cursor-pointer focus:outline-none"
-          >
-            {showMore ? "Show Less" : "See More..."}
-          </button>
-        </div>
+      {/* Second Paragraph (Always fully visible on both desktop & mobile) */}
+      <div className="text-gray-300 text-sm leading-relaxed mb-6">
+        <p>{aboutConfig.description2}</p>
       </div>
 
       {/* Key Metrics & Stats Counter Grid */}
@@ -115,7 +73,7 @@ const About = () => {
                 className="group p-3.5 rounded-xl bg-neutral-950/80 border border-neutral-800 hover:border-amber-400/50 transition-all duration-300 hover:shadow-md hover:shadow-amber-500/10 flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl md:text-2xl font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                  <span className="text-lg sm:text-xl md:text-2xl font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
                     {stat.value}
                   </span>
                   <div className="p-1.5 rounded-lg bg-amber-400/10 text-amber-400 group-hover:scale-110 transition-transform">
