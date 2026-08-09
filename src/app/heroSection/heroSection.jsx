@@ -8,7 +8,7 @@ import Certifications from "../pages/Certifications";
 
 const HeroSection = () => {
   return (
-    <div className="rounded-2xl xl:border-2 xl:border-amber-100 max-w-4xl relative flex justify-between h-full w-full flex-col pb-8">
+    <div className="rounded-2xl max-w-4xl relative flex justify-between h-full w-full flex-col pb-8">
       <div id="about" className="xl:px-5 mb-4 scroll-mt-24">
         <About />
       </div>

@@ -25,10 +25,10 @@ const SocialLinks = () => {
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 text-3xl transition-transform duration-150 hover:text-white hover:scale-110"
+            className="p-2.5 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-neutral-800/80 transition-all duration-200 hover:scale-110 flex items-center justify-center"
             aria-label={item.label}
           >
-            <IconComponent />
+            <IconComponent size={22} />
           </a>
         );
       })}
