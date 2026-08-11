@@ -27,10 +27,10 @@
       "title": "Academy Accreditation - Databricks Fundamentals",
       "issuer": "Databricks",
       "date": "December 2025",
-      "badge": "public/assets/Badges/Databricks Lakehouse Fundamentals-Badge.png",
+      "badge": "assets/Badges/Databricks Lakehouse Fundamentals-Badge.png",
       "embedUrl": "https://credentials.databricks.com/embed/8ac42f00-e25d-4081-8b8e-4ccdc22469ae",
       "verifyUrl": "https://credentials.databricks.com/8ac42f00-e25d-4081-8b8e-4ccdc22469ae",
-      "pdfFile": "assets/certificates/Databricks Lakehouse Fundamentals.pdf",
+      "pdfFile": "assetscertificates/Databricks Lakehouse Fundamentals.pdf",
       "description": "Validated core competencies in the Databricks Lakehouse Platform, Delta Lake, Apache Spark architecture, and cloud data engineering workflows."
     },
     {
@@ -40,10 +40,10 @@
       "title": "Academy Accreditation - Databricks Platform Architect",
       "issuer": "Databricks",
       "date": "April 2025",
-      "badge": "public/assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
+      "badge": "assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
       "embedUrl": "https://credentials.databricks.com/embed/dc608ca6-58e2-4482-b22c-5923e4bd2a4c",
       "verifyUrl": "https://credentials.databricks.com/dc608ca6-58e2-4482-b22c-5923e4bd2a4c",
-      "pdfFile": "public/assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
+      "pdfFile": "assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
       "description": "Demonstrated mastery of designing enterprise Lakehouse architectures, security governance with Unity Catalog, workspace administration, and multi-tenant scaling."
     },
     {
@@ -53,7 +53,7 @@
       "title": "Advantages of Tech Readiness & Data Intelligence",
       "issuer": "Databricks",
       "date": "April 2025",
-      "badge": "public/assets/Badges/Advantages of Tech Readiness & Data Intelligence-Badge.png",
+      "badge": "assets/Badges/Advantages of Tech Readiness & Data Intelligence-Badge.png",
       "embedUrl": "https://credentials.databricks.com/embed/05a939b1-978e-40f8-83b7-08f3f8d0fe56",
       "verifyUrl": "https://credentials.databricks.com/05a939b1-978e-40f8-83b7-08f3f8d0fe56",
       "pdfFile": "assets/certificates/Advantages of Tech Readiness & Data Intelligence.pdf",
