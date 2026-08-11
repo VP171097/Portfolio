@@ -23,14 +23,14 @@
         "99.9% Pipeline Reliability"
       ],
       "highlights": [
-        "Engineered 3-tier Medallion architecture (Bronze ➔ Silver ➔ Gold) on Azure Databricks & Delta Lake",
+        "Engineered 3-tier Medallion architecture (Bronze ➔ Silver ➔ Gold) on Databricks & Delta Lake",
         "Implemented PySpark Structured Streaming with Delta Change Data Feed (CDF) & version watermarking",
         "Extracted sentiment quartiles, talk-to-listen ratios, and customer experience metrics with schema drift protection",
         "Enforced centralized access control, table lineage, and secret management using Unity Catalog"
       ],
       "techStack": [
         "PySpark",
-        "Azure Databricks",
+        "Databricks",
         "Delta Lake",
         "AWS S3",
         "Amazon Connect",

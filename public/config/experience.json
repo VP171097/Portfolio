@@ -19,7 +19,7 @@
       "company": "TATA CONSULTANCY SERVICES, Noida, India",
       "duration": "FEB, 2020 - JAN, 2025",
       "points": [
-        "Built real-time streaming pipelines for TotalEnergies using Azure Databricks, PySpark, and Kafka to process sensor data.",
+        "Built real-time streaming pipelines for TotalEnergies using Databricks, PySpark, and Kafka to process sensor data.",
         "Developed batch-processing pipelines with Python, Azure Function Apps, Azure Data Lake, and Azure SQL Server for reporting and analytics.",
         "Automated Databricks job monitoring via Python and Microsoft Teams integration, cutting manual effort by 1–2 hours daily.",
         "Designed and optimized ETL workflows for data integrity and accuracy; managed six newly hired data engineers across business units.",
