@@ -18,8 +18,9 @@ const getAssetUrl = (path) => {
     path.startsWith("/resume") ||
     path.startsWith("resume")
   ) {
+    const base = import.meta.env.BASE_URL.replace(/^\.\//, "/");
     const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-    return `${import.meta.env.BASE_URL}${cleanPath}`;
+    return `${base}${cleanPath}`;
   }
   return path;
 };
