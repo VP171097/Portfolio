@@ -6,7 +6,6 @@ import {
   ExternalLink,
   Eye,
   Download,
-  FileDown,
   Sparkles,
   Search,
   LayoutGrid,
@@ -207,7 +206,6 @@ const Achievements = () => {
             {filteredItems.map((item) => {
               const pdfUrl = getAssetHref(item.pdfFile || item.imageFile);
               const badgeUrl = getAssetHref(item.badge);
-              const previewImg = getAssetHref(item.imageFile || item.badge);
               const isDatabricks = item.category === "databricks" || item.type === "accredible";
               const isAward = item.category === "awards" || item.type === "award";
 
@@ -325,26 +323,6 @@ const Achievements = () => {
                       </div>
                     )}
 
-                    {/* Certificate Thumbnail Preview (For Non-Embed Courses/Awards or when embed hidden) */}
-                    {(!isDatabricks || !expandedEmbeds[item.id]) && item.imageFile && (
-                      <div className="mb-4 rounded-xl overflow-hidden border border-neutral-800/80 bg-neutral-900/50 p-1 group/img relative">
-                        <img
-                          src={previewImg}
-                          alt={`${item.title} Preview`}
-                          className="w-full h-36 sm:h-40 object-cover rounded-lg group-hover/img:scale-[1.02] transition-transform duration-300"
-                          loading="lazy"
-                        />
-                        <a
-                          href={pdfUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="absolute inset-0 bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-xs font-bold text-white"
-                        >
-                          <Eye size={16} className="text-amber-400" />
-                          <span>Click to View Full Document</span>
-                        </a>
-                      </div>
-                    )}
                   </div>
 
                   {/* Action Buttons Matrix */}
@@ -364,13 +342,14 @@ const Achievements = () => {
                         </a>
                       )}
 
-                      {/* 2. Download Badge Button (For Accredible / Badged items) */}
+                      {/* 2. View Badge Button (For Accredible / Badged items) */}
                       {item.badge && (
                         <a
                           href={badgeUrl}
-                          download={`${item.title} Badge.png`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400 text-xs font-bold text-neutral-200 transition hover:scale-105 shrink-0"
-                          title="Download PNG/SVG Badge"
+                          title="View badge in a new tab"
                         >
                           <Download size={13} className="text-amber-400" />
                           <span>View Badge</span>
@@ -387,17 +366,6 @@ const Achievements = () => {
                       >
                         <Eye size={13} className="text-cyan-400" />
                         <span>View Certificate</span>
-                      </a>
-
-                      {/* 4. Download Certificate Button */}
-                      <a
-                        href={pdfUrl}
-                        download={`${item.title}.pdf`}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400 text-xs font-bold text-neutral-200 transition hover:scale-105 shrink-0"
-                        title="Download certificate PDF locally"
-                      >
-                        <FileDown size={13} className="text-emerald-400" />
-                        <span>Download Certificate</span>
                       </a>
                     </div>
                   </div>
@@ -459,14 +427,6 @@ const Achievements = () => {
                       >
                         <Eye size={12} className="text-cyan-400" />
                         <span>View</span>
-                      </a>
-                      <a
-                        href={pdfUrl}
-                        download={`${item.title}.pdf`}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-neutral-900 border border-neutral-700 text-xs font-bold text-neutral-200 hover:border-amber-400 transition"
-                      >
-                        <FileDown size={12} className="text-emerald-400" />
-                        <span>Download</span>
                       </a>
                     </div>
                   </div>
