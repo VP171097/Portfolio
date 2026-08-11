@@ -92,7 +92,7 @@ const LandingPage = () => {
                   src={
                     badge.image?.startsWith("http")
                       ? badge.image
-                      : `${import.meta.env.BASE_URL}${badge.image?.replace(/^\//, "")}`
+                      : `${import.meta.env.BASE_URL.replace(/^\.\//, "/")}${badge.image?.replace(/^\//, "")}`
                   }
                   alt={badge.name}
                   className="h-10 sm:h-12 w-auto object-contain"
