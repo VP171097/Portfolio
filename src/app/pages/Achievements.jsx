@@ -206,7 +206,6 @@ const Achievements = () => {
             {filteredItems.map((item) => {
               const pdfUrl = getAssetHref(item.pdfFile || item.imageFile);
               const badgeUrl = getAssetHref(item.badge);
-              const previewImg = getAssetHref(item.imageFile || item.badge);
               const isDatabricks = item.category === "databricks" || item.type === "accredible";
               const isAward = item.category === "awards" || item.type === "award";
 
