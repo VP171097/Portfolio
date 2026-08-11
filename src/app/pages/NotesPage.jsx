@@ -128,15 +128,7 @@ const NotesPage = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  if (loading || !notesConfig) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white">
-        Loading Data Engineering Notes...
-      </div>
-    );
-  }
-
-  const categories = notesConfig.categories || [];
+  const categories = useMemo(() => notesConfig?.categories || [], [notesConfig]);
 
   // Flatten all topics with category title attached
   const allNotes = useMemo(() => {
@@ -166,6 +158,14 @@ const NotesPage = () => {
       return matchesCategory && matchesSearch;
     });
   }, [allNotes, activeCategory, searchQuery]);
+
+  if (loading || !notesConfig) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center text-white">
+        Loading Data Engineering Notes...
+      </div>
+    );
+  }
 
   const homeUrl = import.meta.env.BASE_URL;
 

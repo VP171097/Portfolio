@@ -410,9 +410,8 @@ const Achievements = () => {
           /* CHRONOLOGICAL TIMELINE VIEW */
           /* ============================================================ */
           <div className="relative border-l-2 border-amber-400/40 ml-4 sm:ml-8 pl-6 sm:pl-8 space-y-8 py-2">
-            {filteredItems.map((item, idx) => {
+            {filteredItems.map((item) => {
               const pdfUrl = getAssetHref(item.pdfFile || item.imageFile);
-              const badgeUrl = getAssetHref(item.badge);
 
               return (
                 <div key={item.id} className="relative group">
