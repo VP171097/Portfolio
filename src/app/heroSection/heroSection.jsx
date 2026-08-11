@@ -1,31 +1,48 @@
 import React from "react";
 import About from "../pages/about";
+import SkillsSection from "../pages/skills";
+import Projects from "../pages/Projects";
 import Experience from "../pages/Experience";
 import Education from "../pages/Education";
-import Projects from "../pages/Projects";
-import SkillsSection from "../pages/skills";
-import Certifications from "../pages/Certifications";
+import Achievements from "../pages/Achievements";
+import Testimonials from "../pages/Testimonials";
 
 const HeroSection = () => {
   return (
-    <div className="rounded-2xl max-w-4xl relative flex justify-between h-full w-full flex-col pb-8">
-      <div id="about" className="xl:px-5 mb-4 scroll-mt-24">
+    <div className="rounded-2xl max-w-4xl relative flex justify-between h-full w-full flex-col pb-8 space-y-8">
+      {/* 1. About & Executive Metrics */}
+      <div id="about" className="xl:px-4 scroll-mt-24">
         <About />
       </div>
-      <div id="experience" className="xl:px-10 my-4 scroll-mt-24">
-        <Experience />
-      </div>
-      <div id="education" className="xl:px-10 my-4 scroll-mt-24">
-        <Education />
-      </div>
-      <div id="projects" className="xl:px-10 my-4 scroll-mt-24">
-        <Projects />
-      </div>
-      <div id="skills" className="xl:px-10 my-4 scroll-mt-24">
+
+      {/* 2. Skills & Competencies */}
+      <div id="skills" className="xl:px-4 scroll-mt-24">
         <SkillsSection />
       </div>
-      <div id="certifications" className="xl:px-10 my-4 scroll-mt-24">
-        <Certifications />
+
+      {/* 3. Featured Projects & Architectures */}
+      <div id="projects" className="xl:px-4 scroll-mt-24">
+        <Projects />
+      </div>
+
+      {/* 4. Career Experience Timeline */}
+      <div id="experience" className="xl:px-4 scroll-mt-24">
+        <Experience />
+      </div>
+
+      {/* 5. Education Background */}
+      <div id="education" className="xl:px-4 scroll-mt-24">
+        <Education />
+      </div>
+
+      {/* 6. Professional Achievements & Accredited Credentials */}
+      <div id="achievements" className="xl:px-4 scroll-mt-24">
+        <Achievements />
+      </div>
+
+      {/* 7. LinkedIn Endorsements & Recommendations */}
+      <div id="testimonials" className="xl:px-4 scroll-mt-24">
+        <Testimonials />
       </div>
     </div>
   );

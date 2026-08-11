@@ -1,8 +1,41 @@
 {
   "firstName": "VIVEK",
   "lastName": "PANDEY",
-  "title": "Data Engineering | Azure Databricks | PySpark | Azure",
+  "tagline": "Senior Data Engineer & Cloud Consultant",
+  "title": "Databricks | PySpark | Delta Lakehouse | Unity Catalog",
+  "roles": [
+    "Senior Data Engineer",
+    "Databricks Data Engineer",
+    "Real-Time Streaming Engineer",
+    "Cloud ETL & Pipeline Automation Expert"
+  ],
+  "badges": [
+    {
+      "name": "Databricks Platform Architect",
+      "image": "assets/Badge.png",
+      "link": ""
+    }
+  ],
+  "summary": "Engineering enterprise-scale batch & real-time streaming data pipelines, Medallion Lakehouses on Azure Databricks, and high-performance Delta Lake solutions processing millions of daily records.",
   "resumeLink": "/resume.pdf",
+  "stats": [
+    {
+      "value": "6+ Years",
+      "label": "Enterprise Experience"
+    },
+    {
+      "value": "TB+ Scale",
+      "label": "Data Pipelines Built"
+    },
+    {
+      "value": "100%",
+      "label": "Production Delivery"
+    },
+    {
+      "value": "Multi-Cloud",
+      "label": "Azure & AWS Ecosystem"
+    }
+  ],
   "socialLinks": [
     {
       "platform": "GitHub",

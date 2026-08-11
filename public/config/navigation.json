@@ -5,24 +5,30 @@
       "to": "about"
     },
     {
-      "label": "Experience",
-      "to": "experience"
-    },
-    {
-      "label": "Education",
-      "to": "education"
+      "label": "Skills",
+      "to": "skills"
     },
     {
       "label": "Projects",
       "to": "projects"
     },
     {
-      "label": "Skills",
-      "to": "skills"
+      "label": "Experience",
+      "to": "experience"
     },
     {
-      "label": "Certifications",
-      "to": "certifications"
+      "label": "Achievements",
+      "to": "achievements"
+    },
+    {
+      "label": "Endorsements",
+      "to": "testimonials"
+    },
+    {
+      "label": "DE Notes",
+      "to": "notes",
+      "isNewTab": true,
+      "path": "?page=notes"
     },
     {
       "label": "Contact",
