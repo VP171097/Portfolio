@@ -9,7 +9,7 @@ const GithubStatsWidget = ({ username = "VP171097" }) => {
     following: 15,
     publicGists: 4,
     avatarUrl: "https://github.com/VP171097.png",
-    bio: "Senior Data Engineer | Azure Databricks | PySpark | Delta Lake",
+    bio: "Senior Data Engineer | Databricks | PySpark | Delta Lake",
     createdAt: 2020,
   });
 

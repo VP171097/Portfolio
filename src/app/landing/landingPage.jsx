@@ -16,9 +16,9 @@ const LandingPage = () => {
 
   const roles = landingConfig?.roles || [
     "Senior Data Engineer",
-    "Azure Databricks Specialist",
-    "PySpark & Lakehouse Architect",
+    "Databricks Data Engineer",
     "Real-Time Streaming Engineer",
+    "Cloud ETL & Pipeline Automation Expert"
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -162,7 +162,7 @@ const LandingPage = () => {
       </div>
 
       {/* Social Icons (Desktop Floating Dock) */}
-      <div className="hidden xl:flex flex-col gap-2 fixed top-1/2 right-4 2xl:right-8 -translate-y-1/2 z-50 bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md p-2 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl">
+      <div className="hidden xl:flex flex-col gap-2 absolute top-1/2 right-4 2xl:right-8 -translate-y-1/2 z-20 bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md p-2 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl">
         <SocialLinks />
       </div>
 
