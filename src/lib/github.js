@@ -1,6 +1,7 @@
 // GitHub REST API helper with in-memory caching and graceful fallback
 const repoCache = new Map();
 const userCache = new Map();
+const contributionsCache = new Map();
 
 /**
  * Fetch repository metrics (stars, forks, open issues, updated_at, topics)
@@ -78,6 +79,37 @@ export async function fetchGitHubUser(username = "VP171097") {
     return result;
   } catch (err) {
     console.warn(`GitHub user API failed for ${username}:`, err);
+    return null;
+  }
+}
+
+/**
+ * Fetch a GitHub user's contribution count for a given calendar year.
+ * Defaults to the current year, so it rolls forward automatically
+ * (e.g. shows 2027 contributions once the calendar hits 2027).
+ * @param {string} username - e.g. "VP171097"
+ * @param {number} [year] - calendar year, defaults to the current year
+ */
+export async function fetchGitHubContributions(username = "VP171097", year = new Date().getFullYear()) {
+  const cacheKey = `${username}:${year}`;
+  if (contributionsCache.has(cacheKey)) {
+    return contributionsCache.get(cacheKey);
+  }
+
+  try {
+    const res = await fetch(
+      `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`
+    );
+
+    if (!res.ok) return null;
+
+    const data = await res.json();
+    const total = data?.total?.[year] ?? 0;
+
+    contributionsCache.set(cacheKey, total);
+    return total;
+  } catch (err) {
+    console.warn(`GitHub contributions API failed for ${username}:`, err);
     return null;
   }
 }
