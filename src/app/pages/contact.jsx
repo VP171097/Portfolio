@@ -111,8 +111,8 @@ const ContactSection = () => {
           {status && (
             <div
               className={`mb-6 p-4 rounded-xl text-xs sm:text-sm flex items-start gap-2.5 ${status.type === "success"
-                  ? "bg-emerald-950/80 text-emerald-300 border border-emerald-500/40"
-                  : "bg-red-950/80 text-red-300 border border-red-500/40"
+                ? "bg-emerald-950/80 text-emerald-300 border border-emerald-500/40"
+                : "bg-red-950/80 text-red-300 border border-red-500/40"
                 }`}
             >
               {status.type === "success" ? (
@@ -199,8 +199,8 @@ const ContactSection = () => {
               type="submit"
               disabled={loading}
               className={`w-full flex justify-center items-center gap-2 py-3 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer ${loading
-                  ? "bg-neutral-800 text-neutral-400 cursor-not-allowed"
-                  : "bg-amber-500 hover:bg-amber-400 text-black shadow-lg shadow-amber-500/20 hover:scale-[1.01]"
+                ? "bg-neutral-800 text-neutral-400 cursor-not-allowed"
+                : "bg-amber-500 hover:bg-amber-400 text-black shadow-lg shadow-amber-500/20 hover:scale-[1.01]"
                 }`}
             >
               {loading ? (
@@ -297,7 +297,6 @@ const ContactSection = () => {
           <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950/90 p-3 shadow-xl flex flex-col items-center justify-center">
             <div className="flex items-center gap-1.5 self-start mb-2 px-1 text-xs font-semibold text-neutral-400">
               <Activity size={13} className="text-amber-400" />
-              <span>Real-Time Data Pipeline Architecture</span>
             </div>
             <img
               src={pipelineGifUrl}
