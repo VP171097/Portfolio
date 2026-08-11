@@ -152,7 +152,7 @@ const LandingPage = () => {
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-sm font-semibold transition-all shadow-md hover:scale-105"
         >
           <BookOpen size={16} className="text-amber-500 dark:text-amber-400" />
-          <span>DE Notes &amp; Cheat Sheets</span>
+          <span>Data Engineering Cheat Sheets</span>
         </a>
       </div>
 
