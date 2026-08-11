@@ -7,7 +7,7 @@
 [![Web3Forms](https://img.shields.io/badge/Web3Forms-Contact_API-059669?style=for-the-badge&logo=fastapi&logoColor=white)](https://web3forms.com/)
 [![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/VP171097/Portfolio/actions)
 
-A high-performance, responsive, and glassmorphic developer portfolio built for **Vivek Pandey** (Senior Associate Consultant & Azure Data Engineer at Infosys). Engineered with a **100% dynamic JSON configuration engine**, custom 3D micro-interactions, particle canvas background, and automated CI/CD deployment.
+A high-performance, responsive, and glassmorphic developer portfolio built for **Vivek Pandey** (Senior Associate Consultant & Data Engineer at Infosys). Engineered with a **100% dynamic JSON configuration engine**, custom 3D micro-interactions, particle canvas background, and automated CI/CD deployment.
 
 ---
 
@@ -194,7 +194,7 @@ This project uses **GitHub Actions** for automated continuous integration and co
 ## 👨‍💻 Author
 
 **Vivek Pandey**  
-Senior Associate Consultant & Azure Data Engineer  
+Senior Associate Consultant & Data Engineer  
 - 🌐 **Portfolio**: [vp171097.github.io/Portfolio](https://vp171097.github.io/Portfolio/)  
 - 🐙 **GitHub**: [@VP171097](https://github.com/VP171097)  
 - 💼 **LinkedIn**: [linkedin.com/in/vp171097](https://www.linkedin.com/in/vp171097)  

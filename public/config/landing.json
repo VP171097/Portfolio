@@ -12,11 +12,21 @@
   "badges": [
     {
       "name": "Databricks Platform Architect",
-      "image": "assets/Badge.png",
+      "image": "public/assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
+      "link": ""
+    },
+    {
+      "name": "Advantages of Tech Readiness & Data Intelligence",
+      "image": "public/assets/Badges/Advantages of Tech Readiness & Data Intelligence-Badge.png",
+      "link": ""
+    },
+    {
+      "name": "Databricks Lakehouse Fundamentals",
+      "image": "public/assets/Badges/Databricks Lakehouse Fundamentals-Badge.png",
       "link": ""
     }
   ],
-  "summary": "Engineering enterprise-scale batch & real-time streaming data pipelines, Medallion Lakehouses on Azure Databricks, and high-performance Delta Lake solutions processing millions of daily records.",
+  "summary": "Engineering enterprise-scale batch & real-time streaming data pipelines, Medallion Lakehouses on Databricks, and high-performance Delta Lake solutions processing millions of daily records.",
   "resumeLink": "/resume.pdf",
   "stats": [
     {

@@ -2,13 +2,13 @@
   "sectionTitle": "MY EXPERTISE",
   "headline": "Technical & Data Engineering",
   "highlight": "Skills & Cloud Competencies",
-  "description": "Specialized in Big Data & Cloud Platforms, PySpark, Azure Databricks, Delta Lakehouse architectures, real-time streaming, and workflow automation.",
+  "description": "Specialized in Big Data & Cloud Platforms, PySpark, Databricks, Delta Lakehouse architectures, real-time streaming, and workflow automation.",
   "categories": [
     {
       "category": "Data Engineering & Big Data",
       "skills": [
         "PySpark",
-        "Azure Databricks",
+        "Databricks",
         "Databricks Lakehouse",
         "Delta Lake",
         "Unity Catalog",
@@ -58,7 +58,7 @@
       "icon": "/assets/skills/pyspark.png"
     },
     {
-      "name": "Azure Databricks",
+      "name": "Databricks",
       "category": "Data Engineering & Big Data",
       "level": "Expert",
       "proficiency": 95,

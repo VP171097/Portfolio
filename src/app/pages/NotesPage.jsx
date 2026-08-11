@@ -52,10 +52,10 @@ const NoteCard = ({ note, categoryTitle }) => {
           <div className="flex items-center gap-2">
             <span
               className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${note.difficulty === "Expert"
-                  ? "bg-red-500/15 text-red-300 border-red-500/40"
-                  : note.difficulty === "Advanced"
-                    ? "bg-amber-500/15 text-amber-300 border-amber-500/40"
-                    : "bg-emerald-500/15 text-emerald-300 border-emerald-500/40"
+                ? "bg-red-500/15 text-red-300 border-red-500/40"
+                : note.difficulty === "Advanced"
+                  ? "bg-amber-500/15 text-amber-300 border-amber-500/40"
+                  : "bg-emerald-500/15 text-emerald-300 border-emerald-500/40"
                 }`}
             >
               {note.difficulty || "Intermediate"}
@@ -250,8 +250,8 @@ const NotesPage = () => {
           <button
             onClick={() => setActiveCategory("all")}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${activeCategory === "all"
-                ? "bg-amber-400 text-black shadow-lg shadow-amber-400/20 scale-105"
-                : "bg-neutral-900 text-neutral-300 border border-neutral-800 hover:border-neutral-600 hover:text-white"
+              ? "bg-amber-400 text-black shadow-lg shadow-amber-400/20 scale-105"
+              : "bg-neutral-900 text-neutral-300 border border-neutral-800 hover:border-neutral-600 hover:text-white"
               }`}
           >
             <Layers size={14} />
@@ -268,8 +268,8 @@ const NotesPage = () => {
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${isSelected
-                    ? "bg-amber-400 text-black shadow-lg shadow-amber-400/20 scale-105"
-                    : "bg-neutral-900 text-neutral-300 border border-neutral-800 hover:border-neutral-600 hover:text-white"
+                  ? "bg-amber-400 text-black shadow-lg shadow-amber-400/20 scale-105"
+                  : "bg-neutral-900 text-neutral-300 border border-neutral-800 hover:border-neutral-600 hover:text-white"
                   }`}
               >
                 <Icon size={14} />
@@ -300,7 +300,7 @@ const NotesPage = () => {
 
       {/* Footer */}
       <footer className="mt-20 py-8 border-t border-neutral-800 text-center text-xs text-neutral-500">
-        <p>Vivek Pandey • Senior Data Engineer &amp; Azure Databricks Specialist</p>
+        <p>Vivek Pandey • Senior Data Engineer &amp; Databricks Specialist</p>
       </footer>
     </div>
   );

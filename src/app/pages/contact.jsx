@@ -110,11 +110,10 @@ const ContactSection = () => {
 
           {status && (
             <div
-              className={`mb-6 p-4 rounded-xl text-xs sm:text-sm flex items-start gap-2.5 ${
-                status.type === "success"
+              className={`mb-6 p-4 rounded-xl text-xs sm:text-sm flex items-start gap-2.5 ${status.type === "success"
                   ? "bg-emerald-950/80 text-emerald-300 border border-emerald-500/40"
                   : "bg-red-950/80 text-red-300 border border-red-500/40"
-              }`}
+                }`}
             >
               {status.type === "success" ? (
                 <CheckCircle2 size={18} className="text-emerald-400 shrink-0 mt-0.5" />
@@ -140,9 +139,8 @@ const ContactSection = () => {
                 id="name"
                 name="name"
                 required
-                className={`w-full rounded-xl border ${
-                  errors.name ? "border-red-500" : "border-neutral-800 focus:border-amber-400"
-                } bg-neutral-900/90 text-white p-3 text-xs sm:text-sm focus:outline-none transition`}
+                className={`w-full rounded-xl border ${errors.name ? "border-red-500" : "border-neutral-800 focus:border-amber-400"
+                  } bg-neutral-900/90 text-white p-3 text-xs sm:text-sm focus:outline-none transition`}
                 placeholder="e.g. Alex Morgan"
               />
               {errors.name && (
@@ -164,9 +162,8 @@ const ContactSection = () => {
                 id="email"
                 name="email"
                 required
-                className={`w-full rounded-xl border ${
-                  errors.email ? "border-red-500" : "border-neutral-800 focus:border-amber-400"
-                } bg-neutral-900/90 text-white p-3 text-xs sm:text-sm focus:outline-none transition`}
+                className={`w-full rounded-xl border ${errors.email ? "border-red-500" : "border-neutral-800 focus:border-amber-400"
+                  } bg-neutral-900/90 text-white p-3 text-xs sm:text-sm focus:outline-none transition`}
                 placeholder="alex@company.com"
               />
               {errors.email && (
@@ -188,10 +185,9 @@ const ContactSection = () => {
                 name="message"
                 rows="4"
                 required
-                className={`w-full rounded-xl border ${
-                  errors.message ? "border-red-500" : "border-neutral-800 focus:border-amber-400"
-                } bg-neutral-900/90 text-white p-3 text-xs sm:text-sm focus:outline-none transition leading-relaxed`}
-                placeholder="Let's collaborate on a Big Data or Azure Databricks project..."
+                className={`w-full rounded-xl border ${errors.message ? "border-red-500" : "border-neutral-800 focus:border-amber-400"
+                  } bg-neutral-900/90 text-white p-3 text-xs sm:text-sm focus:outline-none transition leading-relaxed`}
+                placeholder="Let's collaborate on a Big Data or Databricks project..."
               />
               {errors.message && (
                 <p className="text-[11px] text-red-400 mt-1">{errors.message}</p>
@@ -202,11 +198,10 @@ const ContactSection = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full flex justify-center items-center gap-2 py-3 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer ${
-                loading
+              className={`w-full flex justify-center items-center gap-2 py-3 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer ${loading
                   ? "bg-neutral-800 text-neutral-400 cursor-not-allowed"
                   : "bg-amber-500 hover:bg-amber-400 text-black shadow-lg shadow-amber-500/20 hover:scale-[1.01]"
-              }`}
+                }`}
             >
               {loading ? (
                 <>

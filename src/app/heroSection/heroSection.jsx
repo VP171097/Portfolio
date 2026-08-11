@@ -15,24 +15,24 @@ const HeroSection = () => {
         <About />
       </div>
 
-      {/* 2. Skills & Competencies */}
-      <div id="skills" className="xl:px-4 scroll-mt-24">
-        <SkillsSection />
-      </div>
-
-      {/* 3. Featured Projects & Architectures */}
-      <div id="projects" className="xl:px-4 scroll-mt-24">
-        <Projects />
-      </div>
-
-      {/* 4. Career Experience Timeline */}
+      {/* 2. Career Experience Timeline */}
       <div id="experience" className="xl:px-4 scroll-mt-24">
         <Experience />
       </div>
 
-      {/* 5. Education Background */}
+      {/* 3. Education Background */}
       <div id="education" className="xl:px-4 scroll-mt-24">
         <Education />
+      </div>
+
+      {/* 4. Skills & Competencies */}
+      <div id="skills" className="xl:px-4 scroll-mt-24">
+        <SkillsSection />
+      </div>
+
+      {/* 5. Featured Projects & Architectures */}
+      <div id="projects" className="xl:px-4 scroll-mt-24">
+        <Projects />
       </div>
 
       {/* 6. Professional Achievements & Accredited Credentials */}
