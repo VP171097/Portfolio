@@ -57,6 +57,9 @@ const configFiles = [
   "socialLinks.json",
   "projects.json",
   "certifications.json",
+  "achievements.json",
+  "testimonials.json",
+  "cheatsheets.json",
 ];
 
 export const ConfigProvider = ({ children }) => {

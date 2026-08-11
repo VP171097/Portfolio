@@ -1,41 +1,46 @@
 {
-  "sectionTitle": "MY SKILLS",
-  "headline": "Technical & Engineering",
-  "highlight": "Skills & Technologies",
-  "description": "Specialized in Big Data & Cloud Platforms, PySpark, Azure Databricks, Data Lakehouse architectures, real-time streaming, and workflow automation.",
+  "sectionTitle": "MY EXPERTISE",
+  "headline": "Technical & Data Engineering",
+  "highlight": "Skills & Cloud Competencies",
+  "description": "Specialized in Big Data & Cloud Platforms, PySpark, Azure Databricks, Delta Lakehouse architectures, real-time streaming, and workflow automation.",
   "categories": [
     {
-      "category": "Languages",
+      "category": "Data Engineering & Big Data",
       "skills": [
-        "Python",
-        "SQL"
-      ]
-    },
-    {
-      "category": "Big Data & Cloud",
-      "skills": [
+        "PySpark",
         "Azure Databricks",
         "Databricks Lakehouse",
+        "Delta Lake",
         "Unity Catalog",
-        "PySpark",
         "Kafka",
-        "AWS S3"
+        "Change Data Feed"
       ]
     },
     {
-      "category": "Azure Services",
+      "category": "Cloud & Storage",
       "skills": [
         "Azure Data Lake",
-        "Azure Key Vault",
-        "Azure Cosmos DB",
+        "AWS S3",
         "Azure SQL Server",
+        "Azure Cosmos DB",
+        "Azure Key Vault",
         "Azure Storage Explorer"
       ]
     },
     {
-      "category": "Tools & Collaboration",
+      "category": "Languages & Querying",
+      "skills": [
+        "Python",
+        "SQL",
+        "Bash / Shell",
+        "XML / HTML"
+      ]
+    },
+    {
+      "category": "DevOps & Collaboration",
       "skills": [
         "GitHub",
+        "GitHub Actions",
         "Jenkins",
         "Bitbucket",
         "Microsoft Teams"
@@ -44,63 +49,174 @@
   ],
   "technicalSkills": [
     {
-      "name": "Python",
-      "icon": "/assets/skills/python.png"
-    },
-    {
-      "name": "SQL",
-      "icon": "/assets/skills/sql.svg"
+      "name": "PySpark",
+      "category": "Data Engineering & Big Data",
+      "level": "Expert",
+      "proficiency": 95,
+      "experience": "5+ Years",
+      "useCase": "Structured Streaming, Medallion ETL, complex transformations, schema drift handling & broadcast joins.",
+      "icon": "/assets/skills/pyspark.png"
     },
     {
       "name": "Azure Databricks",
+      "category": "Data Engineering & Big Data",
+      "level": "Expert",
+      "proficiency": 95,
+      "experience": "5+ Years",
+      "useCase": "Cluster provisioning, Lakehouse compute optimization, Jobs API automation, and multi-region ETL.",
       "icon": "/assets/skills/databricks.png"
     },
     {
       "name": "Databricks Lakehouse",
+      "category": "Data Engineering & Big Data",
+      "level": "Expert",
+      "proficiency": 92,
+      "experience": "4+ Years",
+      "useCase": "Bronze/Silver/Gold tiered lakehouse architecture, ACID transactions, and Time Travel queries.",
       "icon": "/assets/skills/databricks_lakehouse.png"
     },
     {
-      "name": "Azure SQL Server",
-      "icon": "/assets/skills/azure_db.svg"
+      "name": "Delta Lake",
+      "category": "Data Engineering & Big Data",
+      "level": "Expert",
+      "proficiency": 92,
+      "experience": "4+ Years",
+      "useCase": "Change Data Feed (CDF), schema evolution, partitioning, Z-Ordering, and compaction optimization.",
+      "icon": "/assets/skills/databricks_lakehouse.png"
     },
     {
-      "name": "PySpark",
-      "icon": "/assets/skills/pyspark.png"
+      "name": "Unity Catalog",
+      "category": "Data Engineering & Big Data",
+      "level": "Advanced",
+      "proficiency": 90,
+      "experience": "3+ Years",
+      "useCase": "Centralized data governance, fine-grained access control, data lineage, and secret scopes.",
+      "icon": "/assets/skills/databricks.png"
     },
     {
       "name": "Kafka",
+      "category": "Data Engineering & Big Data",
+      "level": "Advanced",
+      "proficiency": 85,
+      "experience": "3+ Years",
+      "useCase": "Real-time sensor event streaming, consumer group partitioning, and PySpark stream ingestion.",
       "icon": "/assets/skills/kafka.svg"
     },
     {
-      "name": "AWS S3",
-      "icon": "/assets/skills/s3.webp"
+      "name": "Change Data Feed",
+      "category": "Data Engineering & Big Data",
+      "level": "Advanced",
+      "proficiency": 88,
+      "experience": "3+ Years",
+      "useCase": "Incremental row-level CDC processing, version watermarking, and downstream lakehouse sync.",
+      "icon": "/assets/skills/databricks_lakehouse.png"
+    },
+    {
+      "name": "Python",
+      "category": "Languages & Querying",
+      "level": "Expert",
+      "proficiency": 95,
+      "experience": "6+ Years",
+      "useCase": "ETL scripting, PySpark pipeline orchestration, data validation, automated alerting & testing.",
+      "icon": "/assets/skills/python.png"
+    },
+    {
+      "name": "SQL",
+      "category": "Languages & Querying",
+      "level": "Expert",
+      "proficiency": 92,
+      "experience": "6+ Years",
+      "useCase": "Complex analytical queries, window functions, CTEs, performance tuning, and schema modeling.",
+      "icon": "/assets/skills/sql.svg"
     },
     {
       "name": "Azure Data Lake",
+      "category": "Cloud & Storage",
+      "level": "Expert",
+      "proficiency": 92,
+      "experience": "5+ Years",
+      "useCase": "Hierarchical namespace storage (ADLS Gen2), data tiering, RBAC, and high-throughput analytics.",
       "icon": "/assets/skills/dataLake.png"
     },
     {
-      "name": "Azure Key Vault",
-      "icon": "/assets/skills/azure_keyvault.webp"
+      "name": "AWS S3",
+      "category": "Cloud & Storage",
+      "level": "Advanced",
+      "proficiency": 88,
+      "experience": "4+ Years",
+      "useCase": "Multi-region bucket ingestion, lifecycle policies, Amazon Connect voice transcript storage.",
+      "icon": "/assets/skills/s3.webp"
+    },
+    {
+      "name": "Azure SQL Server",
+      "category": "Cloud & Storage",
+      "level": "Advanced",
+      "proficiency": 88,
+      "experience": "4+ Years",
+      "useCase": "Relational data warehousing, staging tables, indexing strategies, and automated reporting feeds.",
+      "icon": "/assets/skills/azure_db.svg"
     },
     {
       "name": "Azure Cosmos DB",
+      "category": "Cloud & Storage",
+      "level": "Intermediate",
+      "proficiency": 80,
+      "experience": "2+ Years",
+      "useCase": "NoSQL document storage, low-latency metadata lookups, and global distribution.",
       "icon": "/assets/skills/cosmos.png"
     },
     {
+      "name": "Azure Key Vault",
+      "category": "Cloud & Storage",
+      "level": "Advanced",
+      "proficiency": 90,
+      "experience": "4+ Years",
+      "useCase": "Secret management, Databricks secret scopes, encryption keys, and secure credentials management.",
+      "icon": "/assets/skills/azure_keyvault.webp"
+    },
+    {
       "name": "Azure Storage Explorer",
+      "category": "Cloud & Storage",
+      "level": "Advanced",
+      "proficiency": 90,
+      "experience": "5+ Years",
+      "useCase": "Cloud storage inspection, SAS token management, and blob/container operations.",
       "icon": "/assets/skills/storageExplorer.png"
     },
     {
       "name": "GitHub",
+      "category": "DevOps & Collaboration",
+      "level": "Expert",
+      "proficiency": 92,
+      "experience": "6+ Years",
+      "useCase": "Version control, branching strategies, PR reviews, repo automation, and secret management.",
+      "icon": "/assets/skills/github.png"
+    },
+    {
+      "name": "GitHub Actions",
+      "category": "DevOps & Collaboration",
+      "level": "Advanced",
+      "proficiency": 88,
+      "experience": "3+ Years",
+      "useCase": "Automated CI/CD build & test pipelines, security scanning, and deployment automation.",
       "icon": "/assets/skills/github.png"
     },
     {
       "name": "Jenkins",
+      "category": "DevOps & Collaboration",
+      "level": "Advanced",
+      "proficiency": 85,
+      "experience": "3+ Years",
+      "useCase": "Continuous integration, automated ETL trigger jobs, and build artifact publishing.",
       "icon": "/assets/skills/jenkins.png"
     },
     {
       "name": "Bitbucket",
+      "category": "DevOps & Collaboration",
+      "level": "Advanced",
+      "proficiency": 85,
+      "experience": "4+ Years",
+      "useCase": "Enterprise Git repositories, Jira integration, and code review governance.",
       "icon": "/assets/skills/bitbucket.png"
     }
   ]

@@ -1,0 +1,90 @@
+{
+  "title": "LinkedIn Recommendations & Endorsements",
+  "subtitle": "Direct feedback and professional endorsements from engineering leads, architects, and colleagues on LinkedIn.",
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Ayush Panwar",
+      "role": "Senior Data Engineer at @Citi",
+      "headline": "PySpark, SQL, Databricks, Airflow, AWS | Building scalable data platforms",
+      "date": "July 6, 2023",
+      "context": "Ayush worked with Vivek on different teams",
+      "platform": "LinkedIn",
+      "quote": "I am writing to highly recommend Vivek for his exceptional skills as an Azure Data Engineer. Having had the pleasure of working closely with Vivek on a project, I can confidently say that he possesses a profound expertise in building scalable data pipelines on the Azure platform.\n\nVivek's dedication and passion for his work are truly admirable. He consistently demonstrated his ability to develop innovative solutions for our company, ensuring seamless data flow and integration. His thorough understanding of Azure's capabilities and his expertise in leveraging tools and technologies allowed us to effectively manage and analyze large volumes of data.\n\nOne of the aspects that impressed me the most about Vivek was his meticulous attention to detail. No matter how complex the task or challenging the problem, Vivek was always able to break it down and provide a well-structured solution. His commitment to maintaining data accuracy and integrity was evident throughout the entire process.",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=AyushPanwar",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Prashant Kumar Das",
+      "role": "Full Stack Tech Lead",
+      "headline": "Angular + Node.js | Built Platforms for 10K+ Assets & 4K Users | Microservices • Event-Driven Architecture | 12 Yrs",
+      "date": "February 16, 2025",
+      "context": "Prashant Kumar worked with Vivek on different teams",
+      "platform": "LinkedIn",
+      "quote": "Vivek is an exceptional data engineer with a strong grasp of building scalable data pipelines and optimizing ETL processes. His expertise in Python, Spark, SQL, Azure has been invaluable in driving data-driven decision-making.\n\nBeyond technical skills, Vivek is a great collaborator, simplifying complex data challenges and mentoring teammates. Their ability to turn raw data into meaningful insights makes him a true asset to any organization.",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=PrashantDas",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Vijay Garg",
+      "role": "Data Architect at Morgan Stanley",
+      "headline": "Generative AI, Apache Spark Certified, Data Architect, Databricks expert, Azure Data Engg, Mentor and Consultant",
+      "date": "October 5, 2023",
+      "context": "Vijay worked with Vivek on the same team",
+      "platform": "LinkedIn",
+      "quote": "it's pleasure to working with Vivek. Troubleshooting is a main aspect to become a good data engineer and Vivek not only good in troubleshooting but also having good technical knowledge on python, sql. I am pretty sure Vivek would be a key asset for any team he works for.",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=VijayGarg",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "Nikhil Shrivastava",
+      "role": "Data & Analytics Architect",
+      "headline": "Snowflake · Azure Databricks · Collibra · AI-Integrated Data Platforms | Pharma · Banking · Energy",
+      "date": "February 13, 2025",
+      "context": "Nikhil was senior to Vivek but didn't manage Vivek directly",
+      "platform": "LinkedIn",
+      "quote": "Vivek works smartly and is quite focused in his tasks. Never let down the team and keeps his availability during challenging times. He has quite good knowledge in Azure, Python, SQL and AI technologies. Had worked extensively in data pipelines and databricks. He had received quite a few spot awards as well and is a great learner. Working with Vivek in the team was a very good experience and as a person he is very joyfull",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=NikhilShrivastava",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "name": "Param Bedi",
+      "role": "Frontend Developer @ TCS",
+      "headline": "Angular Specialist | Multi-tech stack project developer",
+      "date": "January 22, 2024",
+      "context": "Param worked with Vivek on the same team",
+      "platform": "LinkedIn",
+      "quote": "I worked with Vivek as a full stack developer in a multi tech stack project. Vivek as data engineer is an outstanding employee and a dear friend who has been an integral part of the team always delivering efficiently and collaborating throughout the different teams.",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=ParamBedi",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "name": "Aanand Ingle",
+      "role": "Data Engineer",
+      "headline": "Data Engineering | Problem Solving & Cloud Analytics",
+      "date": "July 7, 2023",
+      "context": "Aanand worked with Vivek on the same team",
+      "platform": "LinkedIn",
+      "quote": "Vivek, has been instrumental in Solving complex Problems , He is always willing to lend a helping hand & offer guidance. His programming skills are really impressive & his knowledge in Pandas, Python & Azure DE helps us to developed solution in real time scenarios",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=AanandIngle",
+      "rating": 5
+    },
+    {
+      "id": 7,
+      "name": "MD AFZAL",
+      "role": "Product Security Engineer @ MSD",
+      "headline": "Security & Engineering Leadership",
+      "date": "August 26, 2021",
+      "context": "MD worked with Vivek on the same team",
+      "platform": "LinkedIn",
+      "quote": "Vivek has always challenge himself for his work.I have watched vivek develop into a confident and capable leader.Vivek is extremely reasonable,.He can effectively communicate with people across department.He demonstrate critical skills that would make him excellent at company.",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=MdAfzal",
+      "rating": 5
+    }
+  ]
+}
