@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MessageSquareQuote, Star, ChevronLeft, ChevronRight, Quote, Linkedin, Calendar, UserCheck } from "lucide-react";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { useConfig } from "@/context/ConfigContext";
@@ -7,8 +7,17 @@ const Testimonials = () => {
   const { config, loading } = useConfig();
   const testimonialsConfig = config.testimonials;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const itemCount = testimonialsConfig?.testimonials?.length || 0;
 
-  if (loading || !testimonialsConfig || !testimonialsConfig.testimonials?.length) {
+  useEffect(() => {
+    if (itemCount <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % itemCount);
+    }, 10000);
+    return () => clearInterval(timer);
+  }, [itemCount, currentIndex]);
+
+  if (loading || !testimonialsConfig || !itemCount) {
     return null;
   }
 
