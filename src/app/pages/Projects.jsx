@@ -1,23 +1,239 @@
-import React, { useState, useMemo, useRef } from "react";
-import { FolderGit2, Github, ExternalLink, Sparkles, CheckCircle2 } from "lucide-react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
+import {
+  FolderGit2,
+  Github,
+  ExternalLink,
+  Sparkles,
+  CheckCircle2,
+  Star,
+  GitFork,
+  Clock,
+  X,
+  Database,
+  Layers,
+  ArrowRight,
+  Maximize2,
+} from "lucide-react";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { useConfig } from "@/context/ConfigContext";
+import { fetchGitHubRepo } from "@/lib/github";
 
-const ProjectCard = ({ project }) => {
+const ProjectModal = ({ project, gitStats, onClose }) => {
+  if (!project) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl max-h-[90vh] bg-neutral-950 border border-neutral-800 rounded-2xl shadow-2xl overflow-y-auto p-5 sm:p-8 text-white">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-gray-400 hover:text-white border border-neutral-700 transition"
+          aria-label="Close Project Modal"
+        >
+          <X size={18} />
+        </button>
+
+        {/* Modal Header */}
+        <div className="mb-4 pr-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-amber-400/15 border border-amber-400/40 text-amber-300 text-xs font-bold px-2.5 py-0.5 rounded-md">
+              {project.category}
+            </span>
+            {project.featured && (
+              <span className="inline-flex items-center gap-1 bg-amber-400 text-black text-xs font-bold px-2.5 py-0.5 rounded-md">
+                <Sparkles size={12} />
+                Featured
+              </span>
+            )}
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black text-white">
+            {project.title}
+          </h2>
+        </div>
+
+        {/* Project Image Banner */}
+        {project.image && (
+          <div className="relative w-full h-48 sm:h-64 rounded-xl overflow-hidden mb-6 bg-neutral-900 border border-neutral-800">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
+          </div>
+        )}
+
+        {/* Live GitHub Stats Row */}
+        {gitStats && (
+          <div className="grid grid-cols-3 gap-3 mb-6 p-3 bg-neutral-900/80 rounded-xl border border-neutral-800 text-center">
+            <div className="flex flex-col items-center">
+              <span className="flex items-center gap-1 text-amber-400 font-bold text-sm sm:text-base">
+                <Star size={14} />
+                {gitStats.stars}
+              </span>
+              <span className="text-[10px] sm:text-xs text-neutral-400">Stars</span>
+            </div>
+            <div className="flex flex-col items-center border-x border-neutral-800">
+              <span className="flex items-center gap-1 text-cyan-400 font-bold text-sm sm:text-base">
+                <GitFork size={14} />
+                {gitStats.forks}
+              </span>
+              <span className="text-[10px] sm:text-xs text-neutral-400">Forks</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="flex items-center gap-1 text-emerald-400 font-bold text-xs sm:text-sm">
+                <Clock size={13} />
+                {gitStats.pushedAt || "Active"}
+              </span>
+              <span className="text-[10px] sm:text-xs text-neutral-400">Updated</span>
+            </div>
+          </div>
+        )}
+
+        {/* Architectural Overview */}
+        {project.architecture && (
+          <div className="mb-6 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+            <h4 className="text-xs sm:text-sm font-bold text-amber-400 mb-2 flex items-center gap-2">
+              <Database size={15} />
+              <span>Data Architecture & Workflow Pipeline</span>
+            </h4>
+            <p className="text-xs sm:text-sm text-neutral-200 font-mono leading-relaxed">
+              {project.architecture}
+            </p>
+          </div>
+        )}
+
+        {/* Detailed Description */}
+        <div className="mb-6">
+          <h4 className="text-xs sm:text-sm font-bold text-neutral-300 uppercase tracking-wider mb-2">
+            Overview & Problem Solution
+          </h4>
+          <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+            {project.description || project.summary}
+          </p>
+        </div>
+
+        {/* Key Metrics Grid */}
+        {Array.isArray(project.metrics) && project.metrics.length > 0 && (
+          <div className="mb-6">
+            <h4 className="text-xs sm:text-sm font-bold text-neutral-300 uppercase tracking-wider mb-2.5">
+              Key Engineering Metrics
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {project.metrics.map((metric, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 p-2.5 bg-neutral-900/60 border border-neutral-800 rounded-lg text-xs text-neutral-200"
+                >
+                  <CheckCircle2 size={14} className="text-amber-400 shrink-0" />
+                  <span>{metric}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Highlights */}
+        {Array.isArray(project.highlights) && project.highlights.length > 0 && (
+          <div className="mb-6">
+            <h4 className="text-xs sm:text-sm font-bold text-neutral-300 uppercase tracking-wider mb-2.5">
+              Technical Contributions
+            </h4>
+            <ul className="space-y-2">
+              {project.highlights.map((highlight, idx) => (
+                <li
+                  key={idx}
+                  className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-300 leading-normal"
+                >
+                  <CheckCircle2
+                    size={15}
+                    className="text-amber-400 shrink-0 mt-0.5"
+                  />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Tech Stack Badges */}
+        {Array.isArray(project.techStack) && project.techStack.length > 0 && (
+          <div className="mb-6">
+            <h4 className="text-xs sm:text-sm font-bold text-neutral-300 uppercase tracking-wider mb-2.5">
+              Technologies Utilized
+            </h4>
+            <div className="flex flex-wrap gap-1.5">
+              {project.techStack.map((tech, idx) => (
+                <span
+                  key={idx}
+                  className="bg-neutral-900 text-amber-300/90 border border-neutral-700 text-xs px-2.5 py-1 rounded-md font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-neutral-800">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-neutral-500 text-white text-xs sm:text-sm font-bold rounded-xl transition shadow"
+            >
+              <Github size={16} />
+              <span>View Source Code</span>
+            </a>
+          )}
+
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target={project.liveUrl.startsWith("#") ? "_self" : "_blank"}
+              rel="noopener noreferrer"
+              onClick={() => {
+                if (project.liveUrl.startsWith("#")) {
+                  onClose();
+                }
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black text-xs sm:text-sm font-bold rounded-xl shadow-lg shadow-amber-500/20 transition"
+            >
+              <ExternalLink size={16} />
+              <span>{project.liveDemoLabel || "Live Demo"}</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProjectCard = ({ project, onOpenModal }) => {
   const cardRef = useRef(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
+  const [gitStats, setGitStats] = useState(null);
 
-  const hasGithub = Boolean(project.githubUrl && project.githubUrl.trim() !== "");
-  const hasLive = Boolean(project.liveUrl && project.liveUrl.trim() !== "");
-  const hasLinks = hasGithub || hasLive;
+  useEffect(() => {
+    let isMounted = true;
+    if (project.githubRepo) {
+      fetchGitHubRepo(project.githubRepo).then((stats) => {
+        if (isMounted && stats) setGitStats(stats);
+      });
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [project.githubRepo]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
@@ -42,13 +258,14 @@ const ProjectCard = ({ project }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={() => onOpenModal(project, gitStats)}
       style={{
         transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
         transition: "transform 0.15s ease-out",
       }}
-      className="group relative flex flex-col justify-between bg-neutral-950/80 border border-neutral-800 hover:border-amber-400/50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-amber-500/10 will-change-transform"
+      className="group relative flex flex-col justify-between bg-neutral-950/90 border border-neutral-800 hover:border-amber-400/60 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-amber-500/10 cursor-pointer will-change-transform"
     >
-      {/* Specular Radial Glare Overlay */}
+      {/* Specular Glare Overlay */}
       <div
         className="pointer-events-none absolute inset-0 z-20 transition-opacity duration-300 rounded-xl"
         style={{
@@ -63,16 +280,17 @@ const ProjectCard = ({ project }) => {
             <img
               src={project.image}
               alt={project.title}
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent pointer-events-none" />
 
             {/* Category Badge */}
-            <span className="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-neutral-700 text-amber-400 text-xs font-semibold px-2.5 py-1 rounded-md shadow">
+            <span className="absolute top-3 left-3 bg-black/85 backdrop-blur-md border border-neutral-700 text-amber-400 text-xs font-semibold px-2.5 py-1 rounded-md shadow">
               {project.category}
             </span>
 
-            {/* Featured Indicator */}
+            {/* Featured Badge */}
             {project.featured && (
               <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-amber-400 text-black text-xs font-bold px-2.5 py-1 rounded-md shadow-md">
                 <Sparkles size={12} />
@@ -88,32 +306,33 @@ const ProjectCard = ({ project }) => {
             {project.title}
           </h3>
 
-          <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-4">
-            {project.description}
+          <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-4 line-clamp-3">
+            {project.summary || project.description}
           </p>
 
-          {/* Highlights */}
-          {Array.isArray(project.highlights) && project.highlights.length > 0 && (
-            <ul className="space-y-1.5 mb-4">
-              {project.highlights.map((highlight, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-start gap-2 text-xs text-gray-300 leading-normal"
-                >
-                  <CheckCircle2
-                    size={14}
-                    className="text-amber-400 shrink-0 mt-0.5"
-                  />
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
+          {/* Dynamic GitHub stats badge */}
+          {gitStats && (
+            <div className="flex items-center gap-3 mb-3 text-xs text-neutral-400">
+              <span className="inline-flex items-center gap-1 text-amber-300 font-semibold">
+                <Star size={13} className="text-amber-400" />
+                {gitStats.stars}
+              </span>
+              <span className="inline-flex items-center gap-1 text-cyan-300 font-semibold">
+                <GitFork size={13} className="text-cyan-400" />
+                {gitStats.forks}
+              </span>
+              {gitStats.pushedAt && (
+                <span className="text-[11px] text-neutral-500">
+                  {gitStats.pushedAt}
+                </span>
+              )}
+            </div>
           )}
 
           {/* Tech Stack Badges */}
           {Array.isArray(project.techStack) && project.techStack.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-neutral-800">
-              {project.techStack.map((tech, idx) => (
+            <div className="flex flex-wrap gap-1.5 pt-3 border-t border-neutral-800">
+              {project.techStack.slice(0, 4).map((tech, idx) => (
                 <span
                   key={idx}
                   className="bg-neutral-900 text-neutral-300 border border-neutral-700/80 text-[11px] px-2 py-0.5 rounded-md font-medium"
@@ -121,39 +340,34 @@ const ProjectCard = ({ project }) => {
                   {tech}
                 </span>
               ))}
+              {project.techStack.length > 4 && (
+                <span className="text-[10px] text-amber-400 font-semibold self-center">
+                  +{project.techStack.length - 4} more
+                </span>
+              )}
             </div>
           )}
         </div>
       </div>
 
-      {/* Action Links (Conditional Rendering) */}
-      {hasLinks && (
-        <div className="px-5 pb-5 pt-2 flex items-center gap-3 relative z-30">
-          {hasGithub && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-neutral-500 text-white text-xs font-semibold rounded-lg transition"
-            >
-              <Github size={14} />
-              <span>Code Repo</span>
-            </a>
-          )}
+      {/* Card Footer / Modal Trigger */}
+      <div className="px-5 pb-5 pt-2 flex items-center justify-between relative z-30 border-t border-neutral-900">
+        <span className="inline-flex items-center gap-1 text-xs text-amber-400 font-semibold group-hover:underline">
+          <span>View Architecture & Details</span>
+          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+        </span>
 
-          {hasLive && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-black text-xs font-semibold rounded-lg shadow-sm shadow-amber-500/30 transition"
-            >
-              <ExternalLink size={14} />
-              <span>Live Demo</span>
-            </a>
-          )}
-        </div>
-      )}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenModal(project, gitStats);
+          }}
+          className="p-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-gray-400 hover:text-white border border-neutral-800 transition"
+          aria-label="Expand project details"
+        >
+          <Maximize2 size={14} />
+        </button>
+      </div>
     </div>
   );
 };
@@ -162,6 +376,8 @@ const Projects = () => {
   const { config, loading } = useConfig();
   const projectsConfig = config.projects;
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [activeModalProject, setActiveModalProject] = useState(null);
+  const [activeModalGitStats, setActiveModalGitStats] = useState(null);
 
   const categories = useMemo(() => {
     if (!projectsConfig?.categories) return ["All"];
@@ -180,6 +396,16 @@ const Projects = () => {
     return <div className="text-white text-center py-6">Loading Projects...</div>;
   }
 
+  const handleOpenModal = (project, gitStats) => {
+    setActiveModalProject(project);
+    setActiveModalGitStats(gitStats);
+  };
+
+  const handleCloseModal = () => {
+    setActiveModalProject(null);
+    setActiveModalGitStats(null);
+  };
+
   return (
     <div className="text-white">
       <MagicCard
@@ -194,13 +420,15 @@ const Projects = () => {
             <FolderGit2 size={22} className="text-black" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">{projectsConfig.title || "Featured Projects"}</h2>
+            <h2 className="text-2xl font-bold">
+              {projectsConfig.title || "Featured Projects & Architectures"}
+            </h2>
             <div className="bg-yellow-400 w-16 h-1 rounded-sm mt-1"></div>
           </div>
         </div>
 
         {projectsConfig.subtitle && (
-          <p className="text-gray-400 text-sm mt-2 mb-6 px-1 leading-relaxed">
+          <p className="text-gray-400 text-xs md:text-sm mt-2 mb-6 px-1 leading-relaxed">
             {projectsConfig.subtitle}
           </p>
         )}
@@ -230,10 +458,23 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onOpenModal={handleOpenModal}
+            />
           ))}
         </div>
       </MagicCard>
+
+      {/* Deep-Dive Project Modal */}
+      {activeModalProject && (
+        <ProjectModal
+          project={activeModalProject}
+          gitStats={activeModalGitStats}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

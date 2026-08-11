@@ -1,0 +1,113 @@
+{
+  "title": "Achievements & Credentials",
+  "subtitle": "Accredited Databricks credentials, professional cloud certifications, and enterprise recognition awards.",
+  "categories": [
+    {
+      "id": "all",
+      "label": "All Achievements"
+    },
+    {
+      "id": "databricks",
+      "label": "Databricks Accredited"
+    },
+    {
+      "id": "courses",
+      "label": "Certifications & Courses"
+    },
+    {
+      "id": "awards",
+      "label": "Awards & Honors"
+    }
+  ],
+  "items": [
+    {
+      "id": "dbx-fundamentals",
+      "category": "databricks",
+      "type": "accredible",
+      "title": "Academy Accreditation - Databricks Fundamentals",
+      "issuer": "Databricks",
+      "date": "Nov 2023",
+      "badge": "assets/Badge.png",
+      "embedUrl": "https://credentials.databricks.com/embed/8ac42f00-e25d-4081-8b8e-4ccdc22469ae",
+      "verifyUrl": "https://credentials.databricks.com/8ac42f00-e25d-4081-8b8e-4ccdc22469ae",
+      "pdfFile": "assets/certificates/Databricks Lakehouse Fundamentals.pdf",
+      "imageFile": "assets/certificates/Databricks Lakehouse Fundamentals.png",
+      "description": "Validated core competencies in the Databricks Lakehouse Platform, Delta Lake, Apache Spark architecture, and cloud data engineering workflows."
+    },
+    {
+      "id": "dbx-platform-arch",
+      "category": "databricks",
+      "type": "accredible",
+      "title": "Academy Accreditation - Azure Databricks Platform Architect",
+      "issuer": "Databricks",
+      "date": "Dec 2023",
+      "badge": "assets/Badge.png",
+      "embedUrl": "https://credentials.databricks.com/embed/dc608ca6-58e2-4482-b22c-5923e4bd2a4c",
+      "verifyUrl": "https://credentials.databricks.com/dc608ca6-58e2-4482-b22c-5923e4bd2a4c",
+      "pdfFile": "assets/certificates/Azure Databricks Platform Architect.pdf",
+      "imageFile": "assets/certificates/Azure Databricks Platform Architect.png",
+      "description": "Demonstrated mastery of designing enterprise Lakehouse architectures, security governance with Unity Catalog, workspace administration, and multi-tenant scaling."
+    },
+    {
+      "id": "dbx-tech-readiness",
+      "category": "databricks",
+      "type": "accredible",
+      "title": "Advantages of Tech Readiness & Data Intelligence",
+      "issuer": "Databricks",
+      "date": "Jan 2024",
+      "badge": "assets/Badge.png",
+      "embedUrl": "https://credentials.databricks.com/embed/05a939b1-978e-40f8-83b7-08f3f8d0fe56",
+      "verifyUrl": "https://credentials.databricks.com/05a939b1-978e-40f8-83b7-08f3f8d0fe56",
+      "pdfFile": "assets/certificates/Advantages of Tech Readiness & Data Intelligence.pdf",
+      "imageFile": "assets/certificates/Advantages of Tech Readiness & Data Intelligence.png",
+      "description": "Specialized accreditation covering AI/BI integration, data intelligence platforms, automated optimization, and modern data stack readiness."
+    },
+    {
+      "id": "py-data-science",
+      "category": "courses",
+      "type": "course",
+      "title": "Python for Data Science, AI & Development",
+      "issuer": "IBM / Coursera",
+      "platform": "Coursera",
+      "date": "Oct 2023",
+      "verifyUrl": "https://coursera.org/verify/NPR72TK29VCT",
+      "pdfFile": "assets/certificates/Python for Data Science, AI & Development.pdf",
+      "imageFile": "assets/certificates/Python for Data Science, AI & Development.png",
+      "description": "Comprehensive specialization covering Python data structures, pandas, NumPy, REST APIs, and automated data extraction pipelines."
+    },
+    {
+      "id": "prog-everybody",
+      "category": "courses",
+      "type": "course",
+      "title": "Programming for Everybody (Getting Started with Python)",
+      "issuer": "University of Michigan / Coursera",
+      "platform": "Coursera",
+      "date": "Aug 2023",
+      "verifyUrl": "https://coursera.org/verify/7Z5DEPCRKTJ7",
+      "pdfFile": "assets/certificates/Programming for Everybody (Getting Started with Python).pdf",
+      "description": "Core foundation in computational algorithms, programmatic data transformation, conditional logic, and modular scripting."
+    },
+    {
+      "id": "what-is-ds",
+      "category": "courses",
+      "type": "course",
+      "title": "What is Data Science?",
+      "issuer": "IBM / Coursera",
+      "platform": "Coursera",
+      "date": "Jul 2023",
+      "verifyUrl": "https://coursera.org/verify/CXZXD2AGF2Z7",
+      "pdfFile": "assets/certificates/What is Data Science.pdf",
+      "description": "Enterprise overview of data science lifecycles, big data technologies, machine learning workflows, and analytical modeling."
+    },
+    {
+      "id": "tcs-star-team",
+      "category": "awards",
+      "type": "award",
+      "title": "Star Team Award",
+      "organization": "Tata Consultancy Services",
+      "date": "Sep 2023",
+      "pdfFile": "assets/certificates/Star Team Award.pdf",
+      "description": "Recognized for outstanding team contribution, proactive pipeline delivery, and engineering excellence across enterprise lakehouse systems."
+    }
+  ]
+}

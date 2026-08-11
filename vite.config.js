@@ -17,5 +17,17 @@ export default defineConfig(() => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    build: {
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "react-vendor": ["react", "react-dom"],
+            "motion-vendor": ["motion"],
+            "icons-vendor": ["lucide-react", "react-icons", "@tabler/icons-react"],
+          },
+        },
+      },
+    },
   };
 });
