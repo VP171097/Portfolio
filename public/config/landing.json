@@ -12,17 +12,17 @@
   "badges": [
     {
       "name": "Databricks Platform Architect",
-      "image": "public/assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
+      "image": "assets/Badges/Academy Accreditation - Azure Databricks Platform Architect-Badge.png",
       "link": ""
     },
     {
       "name": "Advantages of Tech Readiness & Data Intelligence",
-      "image": "public/assets/Badges/Advantages of Tech Readiness & Data Intelligence-Badge.png",
+      "image": "assets/Badges/Advantages of Tech Readiness & Data Intelligence-Badge.png",
       "link": ""
     },
     {
       "name": "Databricks Lakehouse Fundamentals",
-      "image": "public/assets/Badges/Databricks Lakehouse Fundamentals-Badge.png",
+      "image": "assets/Badges/Databricks Lakehouse Fundamentals-Badge.png",
       "link": ""
     }
   ],
