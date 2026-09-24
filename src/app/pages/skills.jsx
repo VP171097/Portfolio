@@ -4,6 +4,9 @@ import { SparklesText } from "@/components/magicui/sparkles-text";
 import { useConfig } from "@/context/ConfigContext";
 import { Cpu, Search, Sparkles, Star, Zap, CheckCircle2, Layers } from "lucide-react";
 
+// Divisible by both 2 (mobile) and 3 (desktop) columns
+const INITIAL_VISIBLE = 12;
+
 const SkillItemCard = ({ skill }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -14,78 +17,68 @@ const SkillItemCard = ({ skill }) => {
     return "from-emerald-400 to-teal-500";
   };
 
+  const proficiency = skill.proficiency || 88;
+  const levelColor =
+    skill.level === "Expert"
+      ? "text-amber-300"
+      : skill.level === "Advanced"
+      ? "text-blue-300"
+      : "text-emerald-300";
+
   return (
     <div
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      className="relative group bg-neutral-950/80 hover:bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/60 rounded-xl p-4 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-amber-500/10 flex flex-col justify-between"
+      className="relative group bg-neutral-950/80 hover:bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/60 rounded-lg p-2.5 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10 flex flex-col justify-between"
     >
-      {/* Top row: Icon, Name, Level Badge */}
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 p-1.5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-            {skill.icon ? (
-              <img
-                src={skill.icon}
-                alt={skill.name}
-                className="w-full h-full object-contain"
-                loading="lazy"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            ) : (
-              <Cpu size={20} className="text-amber-400" />
-            )}
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-white group-hover:text-amber-300 transition">
+      {/* Icon, Name, Level/Experience, Percentage */}
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 rounded-md bg-neutral-900 border border-neutral-800 p-1 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          {skill.icon ? (
+            <img
+              src={skill.icon}
+              alt={skill.name}
+              className="w-full h-full object-contain"
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          ) : (
+            <Cpu size={16} className="text-amber-400" />
+          )}
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-start justify-between gap-1">
+            <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition leading-tight">
               {skill.name}
             </h4>
-            <span className="text-[11px] text-neutral-400 font-medium">
-              {skill.category}
+            <span className="text-amber-400 font-bold text-[11px] shrink-0">
+              {proficiency}%
             </span>
           </div>
+          <div className="text-[10px] text-neutral-400 truncate">
+            <span className={`font-semibold uppercase tracking-wide ${levelColor}`}>
+              {skill.level || "Proficient"}
+            </span>
+            {skill.experience && <span> · {skill.experience}</span>}
+          </div>
         </div>
-
-        {/* Level Badge */}
-        <span
-          className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider border ${
-            skill.level === "Expert"
-              ? "bg-amber-500/15 text-amber-300 border-amber-500/40"
-              : skill.level === "Advanced"
-              ? "bg-blue-500/15 text-blue-300 border-blue-500/40"
-              : "bg-emerald-500/15 text-emerald-300 border-emerald-500/40"
-          }`}
-        >
-          {skill.level || "Proficient"}
-        </span>
       </div>
 
-      {/* Progress Bar & Percentage */}
-      <div className="mt-2">
-        <div className="flex justify-between items-center text-xs mb-1">
-          <span className="text-neutral-400 text-[11px]">
-            {skill.experience || "Enterprise Delivery"}
-          </span>
-          <span className="text-amber-400 font-bold text-xs">
-            {skill.proficiency || 88}%
-          </span>
-        </div>
-
-        <div className="w-full h-2 bg-neutral-900 rounded-full overflow-hidden border border-neutral-800">
-          <div
-            className={`h-full rounded-full bg-gradient-to-r ${getProgressColor(
-              skill.proficiency || 88
-            )} transition-all duration-700 ease-out`}
-            style={{ width: `${skill.proficiency || 88}%` }}
-          />
-        </div>
+      {/* Progress Bar */}
+      <div className="mt-2 w-full h-1 bg-neutral-900 rounded-full overflow-hidden">
+        <div
+          className={`h-full rounded-full bg-gradient-to-r ${getProgressColor(
+            proficiency
+          )} transition-all duration-700 ease-out`}
+          style={{ width: `${proficiency}%` }}
+        />
       </div>
 
       {/* Floating Detailed Hover Tooltip */}
       {showTooltip && skill.useCase && (
-        <div className="absolute left-1/2 -bottom-2 translate-y-full -translate-x-1/2 w-64 p-3 bg-neutral-950/98 backdrop-blur-xl border border-amber-400/50 rounded-xl shadow-2xl z-50 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute left-1/2 -bottom-2 translate-y-full -translate-x-1/2 w-56 max-w-[80vw] p-3 bg-neutral-950/98 backdrop-blur-xl border border-amber-400/50 rounded-xl shadow-2xl z-50 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
           <div className="flex items-center gap-1.5 text-xs font-bold text-amber-300 mb-1 border-b border-neutral-800 pb-1">
             <Zap size={13} className="text-amber-400" />
             <span>{skill.name} • {skill.experience || "Production"}</span>
@@ -105,6 +98,7 @@ const SkillsSection = () => {
 
   const [activeTab, setActiveTab] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showAll, setShowAll] = useState(false);
 
   const categories = useMemo(() => {
     if (!skillsConfig?.categories) return ["All"];
@@ -126,6 +120,12 @@ const SkillsSection = () => {
       return matchesCategory && matchesSearch;
     });
   }, [allSkills, activeTab, searchQuery]);
+
+  const isCollapsible = filteredSkills.length > INITIAL_VISIBLE;
+  const visibleSkills =
+    isCollapsible && !showAll
+      ? filteredSkills.slice(0, INITIAL_VISIBLE)
+      : filteredSkills;
 
   if (loading || !skillsConfig) {
     return <div className="text-white text-center py-6">Loading Skills...</div>;
@@ -152,12 +152,12 @@ const SkillsSection = () => {
           </div>
         </div>
 
-        <p className="text-gray-300 text-xs md:text-sm mt-2 mb-6 px-1 leading-relaxed">
+        <p className="text-gray-300 text-xs md:text-sm mt-2 mb-4 px-1 leading-relaxed">
           {skillsConfig.description}
         </p>
 
         {/* Filter Controls: Category Tabs + Search Input */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 px-1">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 mb-4 px-1">
           {/* Category Tabs */}
           <div className="flex flex-wrap gap-1.5">
             {categories.map((cat) => {
@@ -196,11 +196,25 @@ const SkillsSection = () => {
 
         {/* Skills Grid with Animated Cards */}
         {filteredSkills.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
-            {filteredSkills.map((skill, idx) => (
-              <SkillItemCard key={idx} skill={skill} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
+              {visibleSkills.map((skill, idx) => (
+                <SkillItemCard key={idx} skill={skill} />
+              ))}
+            </div>
+            {isCollapsible && (
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={() => setShowAll((v) => !v)}
+                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-neutral-900/90 text-neutral-300 border border-neutral-700 hover:border-amber-400 hover:text-amber-300 transition cursor-pointer"
+                >
+                  {showAll
+                    ? "Show less"
+                    : `Show all ${filteredSkills.length} skills`}
+                </button>
+              </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-12 text-neutral-400 text-sm">
             No matching skills found for "{searchQuery}".
