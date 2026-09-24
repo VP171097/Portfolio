@@ -19,12 +19,12 @@ const SkillItemCard = ({ skill }) => {
     <div
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      className="card-cine relative group bg-white/[0.03] border border-white/10 rounded-xl p-4 flex flex-col justify-between"
+      className="card-cine relative group bg-white/[0.03] border border-white/10 rounded-xl p-3 sm:p-4 flex flex-col justify-between"
     >
       {/* Top row: Icon, Name, Level Badge */}
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <div className="flex items-center gap-3">
-          <div className="card-icon w-10 h-10 rounded-lg bg-white/[0.04] border border-white/10 p-1.5 flex items-center justify-center shrink-0">
+      <div className="flex items-start justify-between gap-2 mb-2 sm:mb-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div className="card-icon w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/[0.04] border border-white/10 p-1.5 flex items-center justify-center shrink-0">
             {skill.icon ? (
               <img
                 src={skill.icon}
@@ -39,11 +39,11 @@ const SkillItemCard = ({ skill }) => {
               <Cpu size={20} className="text-sky-400" />
             )}
           </div>
-          <div>
-            <h4 className="text-sm font-bold text-white group-hover:text-sky-300 transition">
+          <div className="min-w-0">
+            <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-sky-300 transition leading-tight truncate">
               {skill.name}
             </h4>
-            <span className="text-[11px] text-neutral-500 font-medium">
+            <span className="hidden sm:block text-[11px] text-neutral-500 font-medium">
               {skill.category}
             </span>
           </div>
@@ -51,7 +51,7 @@ const SkillItemCard = ({ skill }) => {
 
         {/* Level Badge */}
         <span
-          className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider border ${
+          className={`hidden sm:inline-block text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider border ${
             skill.level === "Expert"
               ? "bg-sky-500/20 text-sky-200 border-sky-400/50"
               : skill.level === "Advanced"
@@ -64,8 +64,8 @@ const SkillItemCard = ({ skill }) => {
       </div>
 
       {/* Progress Bar & Percentage */}
-      <div className="mt-2">
-        <div className="flex justify-between items-center text-xs mb-1">
+      <div className="mt-1.5 sm:mt-2">
+        <div className="hidden sm:flex justify-between items-center text-xs mb-1">
           <span className="text-neutral-400 text-[11px]">
             {skill.experience || "Enterprise Delivery"}
           </span>
@@ -74,7 +74,7 @@ const SkillItemCard = ({ skill }) => {
           </span>
         </div>
 
-        <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+        <div className="w-full h-1 sm:h-1.5 bg-white/5 rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full bg-gradient-to-r ${getProgressColor(
               skill.proficiency || 88
@@ -197,7 +197,7 @@ const SkillsSection = () => {
 
         {/* Skills Grid with Animated Cards */}
         {filteredSkills.length > 0 ? (
-          <RevealGroup className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <RevealGroup className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5">
             {filteredSkills.map((skill, idx) => (
               <RevealItem key={idx}>
                 <SkillItemCard skill={skill} />
