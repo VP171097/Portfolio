@@ -123,7 +123,7 @@ const LandingPage = () => {
       <div className="z-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
         <ShimmerButton
           onClick={() => window.open(landingConfig.resumeLink, "_blank")}
-          className="flex items-center gap-2 font-bold px-6 py-3"
+          className="resume-cta flex items-center gap-2 font-bold px-6 py-3"
         >
           <Download size={16} />
           <span>Download Resume (PDF)</span>
