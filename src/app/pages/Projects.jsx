@@ -20,6 +20,8 @@ import { fetchGitHubRepo } from "@/lib/github";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { useIsDesktopPointer } from "@/lib/useReducedMotion";
 
+const MOBILE_VISIBLE_PROJECTS = 3;
+
 const ProjectModal = ({ project, gitStats, onClose }) => {
   if (!project) return null;
 
@@ -279,7 +281,7 @@ const ProjectCard = ({ project, onOpenModal }) => {
       <div>
         {/* Project Image */}
         {project.image && (
-          <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-neutral-800">
+          <div className="relative w-full h-32 sm:h-52 overflow-hidden bg-neutral-900 border-b border-neutral-800">
             <img
               src={project.image}
               alt={project.title}
@@ -304,12 +306,12 @@ const ProjectCard = ({ project, onOpenModal }) => {
         )}
 
         {/* Project Content */}
-        <div className="p-5">
-          <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition mb-2">
+        <div className="p-4 sm:p-5">
+          <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-sky-300 transition mb-1.5 sm:mb-2">
             {project.title}
           </h3>
 
-          <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-4 line-clamp-3">
+          <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
             {project.summary || project.description}
           </p>
 
@@ -354,7 +356,7 @@ const ProjectCard = ({ project, onOpenModal }) => {
       </div>
 
       {/* Card Footer / Modal Trigger */}
-      <div className="px-5 pb-5 pt-2 flex items-center justify-between relative z-30 border-t border-neutral-900">
+      <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 flex items-center justify-between relative z-30 border-t border-neutral-900">
         <span className="inline-flex items-center gap-1 text-xs text-sky-400 font-semibold group-hover:underline">
           <span>View Architecture & Details</span>
           <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
@@ -380,6 +382,7 @@ const Projects = () => {
   const projectsConfig = config.projects;
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeModalProject, setActiveModalProject] = useState(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
   const [activeModalGitStats, setActiveModalGitStats] = useState(null);
 
   const categories = useMemo(() => {
@@ -459,13 +462,32 @@ const Projects = () => {
         )}
 
         {/* Projects Grid */}
-        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredProjects.map((project) => (
-            <RevealItem key={project.id} className="h-full">
+        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-6">
+          {filteredProjects.map((project, idx) => (
+            <RevealItem
+              key={project.id}
+              /* Phones show the first few and reveal the rest on demand;
+                 every project is always rendered from sm upwards. */
+              className={`h-full ${
+                !showAllProjects && idx >= MOBILE_VISIBLE_PROJECTS
+                  ? "hidden sm:block"
+                  : ""
+              }`}
+            >
               <ProjectCard project={project} onOpenModal={handleOpenModal} />
             </RevealItem>
           ))}
         </RevealGroup>
+
+        {filteredProjects.length > MOBILE_VISIBLE_PROJECTS && !showAllProjects && (
+          <button
+            type="button"
+            onClick={() => setShowAllProjects(true)}
+            className="sm:hidden btn-cine mt-4 w-full py-2.5 rounded-xl border border-sky-400/40 bg-sky-400/10 text-sky-300 text-sm font-semibold cursor-pointer"
+          >
+            Show all {filteredProjects.length} projects
+          </button>
+        )}
       </MagicCard>
 
       {/* Deep-Dive Project Modal */}

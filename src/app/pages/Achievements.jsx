@@ -22,6 +22,8 @@ import { MagicCard } from "@/components/magicui/magic-card";
 import { useConfig } from "@/context/ConfigContext";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
+const MOBILE_VISIBLE_ITEMS = 3;
+
 const getAssetHref = (path) => {
   if (!path) return "#";
   if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("blob:") || path.startsWith("data:"))
@@ -38,6 +40,7 @@ const Achievements = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'timeline'
+  const [showAllItems, setShowAllItems] = useState(false);
   const [activeEmbedModal, setActiveEmbedModal] = useState(null); // For fullscreen Accredible embed modal
   const [expandedEmbeds, setExpandedEmbeds] = useState({}); // { [id]: boolean }
 
@@ -200,24 +203,33 @@ const Achievements = () => {
             </p>
           </div>
         ) : viewMode === "grid" ? (
+          <>
           /* ============================================================ */
           /* GRID VIEW */
           /* ============================================================ */
-          <RevealGroup className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {filteredItems.map((item) => {
+          <RevealGroup className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
+            {filteredItems.map((item, idx) => {
               const pdfUrl = getAssetHref(item.pdfFile || item.imageFile);
               const badgeUrl = getAssetHref(item.badge);
               const isDatabricks = item.category === "databricks" || item.type === "accredible";
               const isAward = item.category === "awards" || item.type === "award";
 
               return (
-                <RevealItem key={item.id} className="h-full">
+                <RevealItem
+                  key={item.id}
+                  /* Same phone-only truncation as the projects grid. */
+                  className={`h-full ${
+                    !showAllItems && idx >= MOBILE_VISIBLE_ITEMS
+                      ? "hidden sm:block"
+                      : ""
+                  }`}
+                >
                 <article
-                  className="card-cine h-full rounded-2xl bg-white/[0.03] border border-white/10 p-5 sm:p-6 shadow-xl flex flex-col justify-between group"
+                  className="card-cine h-full rounded-2xl bg-white/[0.03] border border-white/10 p-3.5 sm:p-6 shadow-xl flex flex-col justify-between group"
                 >
                   <div>
                     {/* Top Tag & Date Header */}
-                    <div className="flex items-center justify-between gap-2 mb-3 pb-3 border-b border-neutral-800/80">
+                    <div className="flex items-center justify-between gap-2 mb-2 pb-2 sm:mb-3 sm:pb-3 border-b border-neutral-800/80">
                       <div className="flex items-center gap-2">
                         {isDatabricks ? (
                           <span className="px-2.5 py-0.5 rounded-md bg-sky-400/10 border border-sky-400/30 text-sky-400 text-[11px] font-bold tracking-wide flex items-center gap-1">
@@ -246,14 +258,14 @@ const Achievements = () => {
                     </div>
 
                     {/* Title & Issuer */}
-                    <div className="flex items-start gap-4 mb-3">
+                    <div className="flex items-start gap-3 sm:gap-4 mb-2 sm:mb-3">
                       {/* Badge / Icon Thumbnail */}
                       <div className="shrink-0">
                         {item.badge ? (
                           <img
                             src={badgeUrl}
                             alt={`${item.title} Badge`}
-                            className="h-12 w-12 object-contain filter drop-shadow-md group-hover:scale-110 transition-transform"
+                            className="h-9 w-9 sm:h-12 sm:w-12 object-contain filter drop-shadow-md group-hover:scale-110 transition-transform"
                             loading="lazy"
                           />
                         ) : isAward ? (
@@ -268,7 +280,7 @@ const Achievements = () => {
                       </div>
 
                       <div className="min-w-0">
-                        <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-sky-300 transition-colors">
+                        <h3 className="text-sm sm:text-lg font-bold text-white leading-snug group-hover:text-sky-300 transition-colors">
                           {item.title}
                         </h3>
                         <p className="text-xs text-sky-400 font-semibold mt-0.5 flex items-center gap-1">
@@ -280,7 +292,7 @@ const Achievements = () => {
 
                     {/* Description */}
                     {item.description && (
-                      <p className="text-xs text-neutral-300 leading-relaxed mb-4">
+                      <p className="text-xs text-neutral-300 leading-relaxed mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">
                         {item.description}
                       </p>
                     )}
@@ -375,6 +387,17 @@ const Achievements = () => {
               );
             })}
           </RevealGroup>
+
+          {filteredItems.length > MOBILE_VISIBLE_ITEMS && !showAllItems && (
+            <button
+              type="button"
+              onClick={() => setShowAllItems(true)}
+              className="sm:hidden btn-cine mt-4 w-full py-2.5 rounded-xl border border-sky-400/40 bg-sky-400/10 text-sky-300 text-sm font-semibold cursor-pointer"
+            >
+              Show all {filteredItems.length}
+            </button>
+          )}
+          </>
         ) : (
           /* ============================================================ */
           /* CHRONOLOGICAL TIMELINE VIEW */

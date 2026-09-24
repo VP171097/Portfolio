@@ -7,6 +7,11 @@ const Testimonials = () => {
   const { config, loading } = useConfig();
   const testimonialsConfig = config.testimonials;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+
+  // Long recommendations are clamped on small screens; collapse again when
+  // moving to another one so each starts in the same compact state.
+  useEffect(() => setExpanded(false), [currentIndex]);
   const itemCount = testimonialsConfig?.testimonials?.length || 0;
 
   useEffect(() => {
@@ -113,8 +118,21 @@ const Testimonials = () => {
             </div>
 
             {/* Recommendation Quote Content */}
-            <div className="text-sm sm:text-base text-neutral-200 leading-relaxed mb-6 font-normal space-y-3 whitespace-pre-line">
-              "{current.quote}"
+            <div className="mb-4 sm:mb-6">
+              <div
+                className={`text-sm sm:text-base text-neutral-200 leading-relaxed font-normal space-y-3 whitespace-pre-line ${
+                  expanded ? "" : "line-clamp-[10] sm:line-clamp-none"
+                }`}
+              >
+                "{current.quote}"
+              </div>
+              <button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                className="sm:hidden mt-2 text-xs font-semibold text-sky-400 hover:text-sky-300 cursor-pointer"
+              >
+                {expanded ? "Show less" : "Read full recommendation"}
+              </button>
             </div>
 
             {/* Author Profile Footer */}
@@ -123,7 +141,7 @@ const Testimonials = () => {
                 <img
                   src={current.avatar}
                   alt={current.name}
-                  className="w-12 h-12 rounded-xl bg-neutral-900 border border-sky-400/40 p-0.5 object-cover shadow-md"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-neutral-900 border border-sky-400/40 p-0.5 object-cover shadow-md"
                 />
                 <div>
                   <div className="flex items-center gap-2">

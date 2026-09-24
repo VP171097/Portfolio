@@ -72,7 +72,7 @@ const Architecture = () => {
       className="scroll-mt-24 text-white"
       aria-labelledby="architecture-heading"
     >
-      <div className="glass rounded-2xl px-4 py-7 xl:px-8 xl:py-9">
+      <div className="glass rounded-2xl px-4 py-5 sm:py-7 xl:px-8 xl:py-9">
         <Reveal>
           <p className="eyebrow">Reference Architecture</p>
           <div className="flex items-center gap-3 mt-3">
@@ -90,7 +90,7 @@ const Architecture = () => {
           </p>
         </Reveal>
 
-        <RevealGroup className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5">
+        <RevealGroup className="mt-5 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-3.5">
           {STAGES.map((stage, idx) => (
             <RevealItem key={stage.id}>
               <div
