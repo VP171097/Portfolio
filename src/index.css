@@ -42,6 +42,42 @@ html.theme-light {
   --border: #e2e8f0;
   --muted: #f1f5f9;
   --muted-foreground: #475569;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  --ring: #2563eb;
+
+  /* Swap the yellow/amber accent for blue, which reads better on white */
+  --color-amber-200: #bfdbfe;
+  --color-amber-300: #2563eb;
+  --color-amber-400: #2563eb;
+  --color-amber-500: #1d4ed8;
+  --color-amber-600: #1e40af;
+  --color-amber-700: #1e3a8a;
+  --color-yellow-400: #2563eb;
+  --color-yellow-500: #1d4ed8;
+}
+
+/* Primary resume button: blue fill with white text instead of dark-on-black */
+html.theme-light .resume-cta.resume-cta {
+  --bg: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Pale 300-shade labels (e.g. skill levels) are too faint on white */
+html.theme-light .text-blue-300 {
+  color: #0369a1 !important;
+}
+
+html.theme-light .text-emerald-300 {
+  color: #047857 !important;
+}
+
+/* Black text/icons on the (now blue) accent fills become white */
+html.theme-light :is(.bg-amber-300, .bg-amber-400, .bg-amber-500, .bg-yellow-400).text-black,
+html.theme-light :is(.bg-amber-300, .bg-amber-400, .bg-amber-500, .bg-yellow-400) .text-black {
+  color: #ffffff !important;
 }
 
 /* Light mode typography & high contrast color enforcement */
@@ -121,15 +157,15 @@ html.theme-light header nav a:hover {
 }
 
 html.theme-light .hero-role-text {
-  background: linear-gradient(to right, #0f172a, #d97706, #b45309) !important;
+  background: linear-gradient(to right, #0f172a, #2563eb, #1e40af) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 html.theme-light .active {
-  background-color: rgba(245, 158, 11, 0.2) !important;
-  color: #b45309 !important;
-  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  background-color: rgba(37, 99, 235, 0.12) !important;
+  color: #1d4ed8 !important;
+  border: 1px solid rgba(37, 99, 235, 0.35) !important;
 }
 
 @theme inline {
